@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/square.css">
+    <style> #drag-browser, #oxygen, #microphone, #id, #time, #cinematic {display: none;}
+     @keyframes pulse {
+      0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+      50% {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+      }
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+      }  
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="./js/jquery.wheelcolorpicker.js"></script>
+    <link type="text/css" rel="stylesheet" href="./css/wheelcolorpicker.dark.css" />
+  </head>
+  <body>
+    <p id="time">10:20</p>
+
+    <div class="main"id="main">
+
+      <svg class="circle" id="health" width="60" height="60">
+        <circle class="progressplayer health" id="health-circle" stroke="#9DE112" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image class="a" href="img/health.png" height="17" width="17" x="16" y="27"></image>
+      </svg>
+
+      <svg class="circle" id="armor" width="60" height="60">
+        <circle class="progressplayer armor" id="armor-circle" stroke="#3585DA" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/armor.png" height="17" width="17" x="16" y="27"></image>
+      </svg>
+
+      
+        <svg class="circle" id="hunger" width="60" height="60">
+        <circle class="progressplayer hunger" id="hunger-circle" stroke="#ffa200" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image class="a" href="img/hunger.png" height="17" width="17" x="16" y="27"></image>
+      </svg>
+
+      <svg class="circle" id="thirst" width="60" height="60">
+        <circle class="progressplayer thirst" id="thirst-circle" stroke="#00b6e3" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/thirst.png" height="17" width="17" x="16" y="27"></image>
+      </svg>
+    
+      <svg class="circle" id="stress" width="60" height="60">
+        <circle class="progressplayer stress" id="stress-circle" stroke="#A118DB" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/stress.png" height="17" width="17" x="16" y="27"></image>
+      </svg>
+
+      <svg class="circle" id="stamina" width="60" height="60">
+        <circle class="progressplayer stamina" id="stamina-circle" stroke="#FFC100" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/stamina.png" height="18" width="18" x="15" y="27"></image>
+      </svg>
+
+      <svg class="circle" id="oxygen" width="60" height="60">
+        <circle class="progressplayer oxygen" id="oxygen-circle" stroke="#A636ED" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/oxygen.png" height="22" width="22" x="13" y="24"></image>
+      </svg>
+
+      <svg class="circle" id="microphone" width="60" height="60">
+        <circle class="progressplayer microphone" id="microphone-circle" stroke="#ff6f00" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <image href="img/microphone.png" height="18" width="18" x="15" y="27"></image>
+      </svg>
+
+      <svg class="circle" id="id" width="60" height="60">
+        <circle class="progressplayer id" id="id-circle" stroke="#FF0046" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+        <text id="idnumber" x="24" y="37" dominant-baseline="middle" text-anchor="middle">123</text>
+      </svg>
+    </div>
+
+    <div id="cinematic">
+      <div class="top" id="top"></div>
+      <div class="bottom" id="bottom"></div>
+    </div>
+
+    <div class="browser-window-osx" id="drag-browser">
+      <div class="header">
+        <image src="img/cross.png" id="close" height="22" width="22"></image> 
+        <image src="img/reset.png" id="reset" height="20" width="20" ></image>
+        <h3 id="title-hud">HUD SETTINGS</h3> 
+      </div>
+        <div class="window">
+          <div class="background">
+            <div class="test-left">
+              <image src="./img/health.png" alt="Image did not load correctly">
+
+              <label class="switch buttonleft" >
+                <input type="checkbox" id="health-switch" checked>
+                <span class="slider round"></span>
+              </label>
+  
+              <image src="./img/armor.png" alt="Image did not load correctly">
+
+              <label class="switch buttonleft" >
+                <input type="checkbox" id="armor-switch" checked>
+                <span class="slider round"></span>
+              </label>
+
+              <image  src="./img/stamina.png" alt="Image did not load correctly">
+              
+              <label class="switch buttonleft" >
+                <input type="checkbox" id="stamina-switch" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            
+            <div class="test-center">
+              <image src="./img/map.png" alt="Image did not load correctly">
+
+              <label class="switch buttonleft2" >
+                <input type="checkbox" id="map-switch" >
+                <span class="slider round"></span>
+              </label>
+                
+              <image src="./img/id.png" alt="Image did not load correctly">
+
+              <label class="switch buttoncenter2" >
+                <input type="checkbox" id="id-switch" >
+                <span class="slider round"></span>
+              </label>
+
+              <image src="./img/oxygen.png" alt="Image did not load correctly">
+
+              <label class="switch buttonright2" >
+                  <input type="checkbox" id="oxygen-switch">
+                  <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="test-right">
+              <image src="./img/cinematic.png" alt="Image did not load correctly">
+
+              <label class="switch buttonleft3" >
+                  <input type="checkbox" id="cinematic-switch" >
+                  <span class="slider round"></span>
+              </label>
+
+              <image src="./img/time.png" alt="Image did not load correctly">
+
+              <label class="switch buttoncenter3" >
+                <input type="checkbox" id="time-switch" >
+                <span class="slider round"></span>
+              </label> 
+
+              <image src="./img/microphone.png" alt="Image did not load correctly">
+        
+              <label class="switch buttonright3" >
+                <input type="checkbox" id="microphone-switch" >
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div id="hunger-thirst" class="test-right">
+              <image src="./img/hunger.png" alt="Image did not load correctly">
+
+              <label class="switch buttonleft3" >
+                  <input type="checkbox" id="hunger-switch" checked>
+                  <span class="slider round"></span>
+              </label>
+
+              <image src="./img/thirst.png" alt="Image did not load correctly">
+
+              <label class="switch buttoncenter3" >
+                <input type="checkbox" id="thirst-switch" checked>
+                <span class="slider round"></span>
+              </label>
+
+              <image id="stress-show"src="./img/stress.png" alt="Image did not load correctly">
+
+              <label id="stress-button" class="switch buttoncenter3" >
+                <input type="checkbox" id="stress-switch" checked>
+                <span class="slider round"></span>
+              </label> 
+            </div>
+
+            <div class="buttons-center">
+              <button type="button" class="button-left" id="reset-position">Reset position</button>
+              <button type="button" class="button-right" id="reset-color">Reset colors</button>
+            </div>
+
+            <div class="footer-center">
+              <select id="selection">
+                <option class="options" value="health-option" selected>Health</option>
+                <option class="options" value="armor-option">Armor</option>
+                <option id="hunger-option" class="options" value="hunger-option">Hunger</option>
+                <option id="thirst-option" class="options" value="thirst-option">Thirst</option>
+                <option id="stress-option" class="options" value="stress-option">Stress</option>
+                <option class="options" value="stamina-option">Stamina</option>
+                <option class="options" value="oxygen-option">Oxygen</option>
+                <option class="options" value="microphone-option">Microphone</option>
+                <option class="options" value="id-option">Id</option>
+                <option class="options" value="time-option">Time</option>
+              </select>
+
+              <input id="color-block" class="color-block" type="text" value="#ccc" data-wheelcolorpicker="" data-wcp-format="rgba" data-wcp-layout="block" data-wcp-sliders="wsvap" data-wcp-cssclass="color-block" data-wcp-autoresize="true">
+            </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/config.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+  </body>
+</html>

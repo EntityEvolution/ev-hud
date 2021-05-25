@@ -1,0 +1,146 @@
+/* Hud */
+@font-face {
+  font-family: Kum;
+  src: url('../fonts/KumbhSans-Bold.ttf');
+}
+
+.main {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+/* Header of Menu*/
+#title-hud {
+  color:white;
+  font-family: Kum; 
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  order: 2;
+}
+
+#reset {
+  position:relative;
+  order: 1;
+  margin-left: 8px;
+  margin-top: 5px;
+}
+
+#close {
+  margin-right: 8px;
+  position:relative;
+  order: 3;
+  margin-top: 5px;
+}
+
+#time {
+  position: relative;
+  top: 0%;
+  width: 10%;
+  border-radius: 10px;
+  text-align: right;
+  font-size: 30px;
+  font-family: Kum;
+  color:rgb(255, 255, 255);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+#idnumber {
+  font-size: 14px;
+  font-family: Kum;
+  fill: whitesmoke;
+  overflow:hidden;
+}
+
+.top{
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  left: 0%;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  left: 0%;
+}
+
+/* --------------------------------------------------------*/
+
+.browser-window-osx {
+  position:relative;
+  box-shadow: 0px 6px 9px 0px rgba(50, 50, 50, 0.11);
+  background: rgb(28,40,83);
+  background: linear-gradient(90deg, rgba(28,40,83,1) 0%, rgba(18,38,78,1) 25%, rgba(21,46,88,1) 50%, rgba(18,38,78,1) 75%, rgba(28,37,77,1) 100%);
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  height: 100%;
+  width: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 25%);
+}
+
+.browser-window-osx .header {
+  background: #0a0e1f;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px 6px 0 0;
+  height: 30px;
+  
+}
+
+#selection {
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
+  font-family: Kum;
+  font-size:16px;
+  color: #fff;
+  float: right;
+  width: 155px;
+  height: 30px;
+  border-radius: 5px;
+  transition: all 0.1s;
+	background: black;
+	background: linear-gradient(90deg, rgba(19,36,80,1) 0%, rgba(21,36,80,1) 46%, rgba(5,16,57,1) 100%);
+  box-shadow: 0 0 6px 1px #1fbfb8;
+  text-shadow: 1px 1px 5px black;
+  overflow: hidden;
+}
+
+.options {
+  background-color: #0a0e1f;
+}
+
+.footer-center {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+/* Progress Bar*/
+.progressplayer {
+  -webkit-transition: 0.35s stroke-dashoffset;
+  -o-transition: 0.35s stroke-dashoffset;
+  transition: 0.35s stroke-dashoffset;
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  overflow:none;
+  stroke-linecap: round;
+}

@@ -2,12 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
+        <!--CSS files-->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/panel.css">
+    <link rel="stylesheet" href="./css/wheelcolorpicker.dark.css"/>
+
+    <!--jQuery plugin-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="./js/jquery.wheelcolorpicker.js"></script>
-    <link type="text/css" rel="stylesheet" href="./css/wheelcolorpicker.dark.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
   </head>
   <body>
     <!--<p id="time">10:20</p>-->
@@ -58,6 +63,14 @@
           <circle class="progressplayer id" id="id-circle" stroke="#FF0046" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
           <text id="idnumber" x="40%" y="62.5%" dominant-baseline="middle" text-anchor="middle">123</text>
         </svg>
+      </div>
+    </div>
+
+    <div class="panel-container">
+      <div class="panel-title-wrapper">
+        <span class="panel-title">Settings</span>
+        <span class="fa fa-times" id="close"></span>
+        <span class="fa fa-window-restore" id="restore"></span>
       </div>
     </div>
 
@@ -188,7 +201,9 @@
             </div>
         </div>
     </div>-->
-    <script type="text/javascript" src="./js/config.js"></script>
-    <script type="text/javascript" src="./js/script.js"></script>
+        <!--Javascript files-->
+    <script src="./js/config.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/jquery.wheelcolorpicker.js"></script>
   </body>
 </html>

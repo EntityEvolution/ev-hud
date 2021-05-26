@@ -1,3 +1,44 @@
+/* Customization Panel */
+:root {
+  --lightGray:#c137f5;
+  --mediumGray:#1fbfb8;
+  --darkGray:#fd2e78;
+}
+
+.panel-container {
+  position: absolute;
+  width: 30%;
+  height: 60%;
+  background-color: rgb(255, 209, 58);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family:Kum;
+  font-size: 2vh;
+}
+
+.panel-title-wrapper {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 7%;
+  background-color: red;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 2px solid blue;
+  display: flex;
+  display: flex;
+  justify-content:space-around;
+  align-self: center;
+}
+
+.panel-title {
+  align-self: center;
+  order: 2;
+  font-size: 100%;
+}
+
 /* Customization Panel
 @font-face {
   font-family: Kum;

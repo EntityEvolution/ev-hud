@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
   if (Config.useESX) {
     document.getElementById("hunger").style.display = "";
     document.getElementById("thirst").style.display = "";
@@ -26,7 +26,7 @@ $(document).ready(function() {
     document.getElementById("thirst-option").style.display = "none";
     document.getElementById("stress-option").style.display = "none";
   };
-});
+});*/
 
 // Set everything to be draggable
 $(function() {

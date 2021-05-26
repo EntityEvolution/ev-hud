@@ -1,12 +1,12 @@
 fx_version 'cerulean'
 
-game { 'gta5' }
+game 'gta5'
+
+version '3.0.0'
+
+description 'Standalone hud created by a deleted organization'
 
 lua54 'yes'
-
-version '2.0.2'
-
-description 'Standalone hud created by Project Entity'
 
 client_scripts {
 	'config/config_cl.lua',

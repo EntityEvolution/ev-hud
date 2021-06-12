@@ -12,54 +12,146 @@
     <link rel="stylesheet" href="./css/wheelcolorpicker.css"/>
   </head>
   <body style="background-color: rgb(63, 63, 63);">
-    <span class="time" id="time">10:20</span>
     <div class="wrapper">
       <div class="main" id="main">
         <svg class="circle" id="health" width="60" height="60">
           <circle class="progressplayer health" id="health-circle" stroke="#9DE112" stroke-width="5.0" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/health.png" height="17" width="17" x="26%" y="47.5%"></image>
+          <image href="./img/logos/health.png" height="17" width="17" x="26%" y="47.5%"></image>
         </svg>
 
         <svg class="circle" id="armor" width="60" height="60">
           <circle class="progressplayer armor" id="armor-circle" stroke="#3585DA" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/armor.png" height="17" width="17" x="26%" y="46.5%"></image>
+          <image href="./img/logos/armor.png" height="17" width="17" x="26%" y="46.5%"></image>
         </svg>
 
         
           <svg class="circle" id="hunger" width="60" height="60">
           <circle class="progressplayer hunger" id="hunger-circle" stroke="#ffa200" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/hunger.png" height="17" width="17" x="25.5%" y="46.5%"></image>
+          <image href="./img/logos/hunger.png" height="17" width="17" x="25.5%" y="46.5%"></image>
         </svg>
 
         <svg class="circle" id="thirst" width="60" height="60">
           <circle class="progressplayer thirst" id="thirst-circle" stroke="#00b6e3" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/thirst.png" height="17" width="17" x="25.5%" y="46.5%"></image>
+          <image href="./img/logos/thirst.png" height="17" width="17" x="25.5%" y="46.5%"></image>
         </svg>
       
         <svg class="circle" id="stress" width="60" height="60">
           <circle class="progressplayer stress" id="stress-circle" stroke="#f54994" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/stress.png" height="17" width="17" x="26%" y="46.5%"></image>
+          <image href="./img/logos/stress.png" height="17" width="17" x="26%" y="46.5%"></image>
         </svg>
 
         <svg class="circle" id="stamina" width="60" height="60">
           <circle class="progressplayer stamina" id="stamina-circle" stroke="#FFC100" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/stamina.png" height="18" width="18" x="24.5%" y="46.5%"></image>
+          <image href="./img/logos/stamina.png" height="18" width="18" x="24.5%" y="46.5%"></image>
         </svg>
 
         <svg class="circle" id="oxygen" width="60" height="60">
           <circle class="progressplayer oxygen" id="oxygen-circle" stroke="#A636ED" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/oxygen.png" height="20" width="20" x="23.5%" y="42.5%"></image>
+          <image href="./img/logos/oxygen.png" height="20" width="20" x="23.5%" y="42.5%"></image>
         </svg>
 
         <svg class="circle" id="microphone" width="60" height="60">
           <circle class="progressplayer microphone" id="microphone-circle" stroke="#ff6f00" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
-          <image href="img/microphone.png" height="17" width="17" x="26%" y="47.5%"></image>
+          <image href="./img/logos/microphone.png" height="17" width="17" x="26%" y="47.5%"></image>
         </svg>
 
         <svg class="circle" id="id" width="60" height="60">
           <circle class="progressplayer id" id="id-circle" stroke="#FF0046" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
           <text class="idnumber" id="idnumber" x="40%" y="62.5%" dominant-baseline="middle" text-anchor="middle">123</text>
         </svg>
+      </div>
+    </div>
+
+    <!--Phone menu-->
+    <div class="panel-menu-wrapper">
+      <div id="phone" class="image-container">
+        <div class="image-time-container">
+          <span class="image-time">10:20</span>
+        </div>
+        <span class="image-title">Settings</span>
+        <span class="image-exit"></span>
+        <img class="image-panel" src="./img/phone.png" alt="Phone">
+        <div class="image-wrapper">
+          <div class="button-container">
+            <label class="switch-top">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-health" src="./img/logos/health.png" alt="health"></img>
+              <p class="switch-title">Health</p>
+            </label>
+            <label class="switch-top">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-armor" src="./img/logos/armor.png" alt="armor"></img>
+              <p class="switch-title">Armor</p>
+            </label>
+
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-hunger" src="./img/logos/hunger.png" alt="hunger"></img>
+              <p class="switch-title">Hunger</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-stress" src="./img/logos/stress.png" alt="stress"></img>
+              <p class="switch-title">Stress</p>
+            </label>
+
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-thirst" src="./img/logos/thirst.png" alt="thirst"></img>
+              <p class="switch-title">Thirst</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-stamina" src="./img/logos/stamina.png" alt="stamina"></img>
+              <p class="switch-title">Stamina</p>
+            </label>
+
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-oxygen" src="./img/logos/oxygen.png" alt="oxygen"></img>
+              <p class="switch-title">Oxygen</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-microphone" src="./img/logos/microphone.png" alt="microphone"></img>
+              <p class="switch-title">Microphone</p>
+            </label>
+
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-id" src="./img/logos/id.png" alt="id"></img>
+              <p class="switch-title">ID</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
+              <p class="switch-title">Cinema</p>
+            </label>
+
+            <select class="selection" id="selection">
+              <option class="options" value="health-option" selected>Health</option>
+              <option class="options" value="armor-option">Armor</option>
+              <option class="options" id="hunger-option" value="hunger-option">Hunger</option>
+              <option class="options" id="thirst-option" value="thirst-option">Thirst</option>
+              <option class="options" id="stress-option" value="stress-option">Stress</option>
+              <option class="options" value="stamina-option">Stamina</option>
+              <option class="options" value="oxygen-option">Oxygen</option>
+              <option class="options" value="microphone-option">Microphone</option>
+            </select>
+
+
+          </div>
+        </div>
       </div>
     </div>
 

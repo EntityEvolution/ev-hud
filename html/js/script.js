@@ -106,7 +106,7 @@ $(function() {
       localStorage.setItem("microphoneLeft", dragpositionMicrophoneLeft);
     }
   });
-  $("#drag-browser").draggable();
+  $("#phone").draggable();
 });
 
 // Switches & Cases
@@ -471,3 +471,14 @@ function progressCircle(percent, element) {
 
   html.text(Math.round(percent));
 }
+
+// Sliding animation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});

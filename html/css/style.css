@@ -4,6 +4,25 @@
   src: url('../fonts/KumbhSans-Regular.ttf');
 }
 
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 0.5vh;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background-color: rgb(143, 143, 143);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Hud */
 .wrapper {
   position: absolute;
@@ -25,7 +44,7 @@
   margin-top: 1%;
   border-radius: 10px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2vw;
   font-family: Kum;
   font-weight: bolder;
   color:white;
@@ -63,4 +82,253 @@
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-}  
+}
+
+/* Phone UI Panel */
+.panel-menu-wrapper {
+  position: absolute;
+  bottom: 10%;
+  left: 0%;
+  height: 75%;
+  width: 100%;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  margin-left: 1%;
+}
+
+.image-panel {
+  display: flex;
+  width: 40vh;
+  height: auto;
+}
+
+.image-time-container {
+  position: absolute;
+  width: 5vh;
+  height: 2vh;
+  transform: translate(-260%, 200%);
+}
+
+.image-time {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3vh;
+  font-family: Kum;
+  font-weight: bolder;
+}
+
+.image-title {
+  position: absolute;
+  font-size: 2.0vh;
+  font-family: Kum;
+  font-weight: bolder;
+  top: 9%;
+  border-bottom: 2px solid gray;
+}
+
+.image-exit {
+  position: absolute;
+  font-size: 2.0vh;
+  width: 50%;
+  bottom: 4.5%;
+  border-bottom: 1vh solid gray;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.image-exit:hover {
+  border-bottom: 1vh solid rgb(73, 73, 73);
+}
+
+.image-wrapper {
+  position: absolute;
+  top: 13%;
+  width: 33.5vh;
+  height: 80%;
+  border-radius: 12px;
+  overflow-y: scroll;
+}
+
+.button-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.switch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex: 1 0 40%; /* explanation below */
+  height: 11vh;
+  margin-top: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.switch-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex: 1 0 40%; /* explanation below */
+  height: 11vh;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.switch input,
+.switch-top input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: #C4C4C4;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background: #388eff;
+}
+
+.switch-title {
+  position: absolute;
+  top: 90%;
+  font-size: 0.9vw;
+  font-family: Kum;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.slider-label {
+  position: absolute;
+  font-family: Kum;
+  font-size: 2vh;
+}
+
+#slider-health {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-armor {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-hunger {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-stress {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-thirst {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-stamina {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-oxygen {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-microphone {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-id {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+#slider-cinematic {
+  position: relative;
+  top: 25%;
+  left: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+/* Colorpicker */
+.selection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 60%; /* explanation below */
+  height: 6vh;
+
+  border-radius: 12px;
+  border: none;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+  margin-top: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+
+  font-size: 1vw;
+  font-family: Kum;
+  font-weight: 600;
+}
+
+.options {
+  font-size: 0.8vw;
+  background-color: #E6E8EA;
+}
+
+select:focus {
+  outline: none;
+}

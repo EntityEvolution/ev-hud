@@ -4,7 +4,7 @@ game 'gta5'
 
 version '3.0.0'
 
-description 'Standalone hud created by a deleted organization'
+description 'Standalone hud created by a Entity Evolution'
 
 lua54 'yes'
 

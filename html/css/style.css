@@ -1,6 +1,7 @@
 @font-face {
+  font-display: swap;
   font-family: Kum;
-  src: url('../fonts/KumbhSans-Bold.ttf');
+  src: url('../fonts/KumbhSans-Regular.ttf');
 }
 
 /* Hud */
@@ -12,11 +13,29 @@
   bottom: 0.5%;
   left: 50%;
   transform: translate(-50%, 0%);
-  background-color: aquamarine;
 }
 
 .main {
   position: relative;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Kum;
+  font-weight: bolder;
+  color:white;
+}
+
+.idnumber {
+  font-size: 0.7rem;
+  font-family: Kum;
+  font-weight: bolder;
+  fill: whitesmoke;
 }
 
 /* Progress Bar */

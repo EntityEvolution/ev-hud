@@ -1,18 +1,18 @@
 /**
- * Wheel Color Picker for jQuery
- * Base Stylesheet
- * 
- * https://raffer.one/projects/jquery-wheelcolorpicker
- * 
- * Copyright © 2011-2019 Fajar Chandra. All rights reserved.
- * Released under MIT License.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * Note: Width, height, left, and top properties are handled by the 
- * plugin. These values might change on the fly.
- */
+  Wheel Color Picker for jQuery
+  Base Stylesheet
 
- :root {
+  https://raffer.one/projects/jquery-wheelcolorpicker
+
+  Copyright © 2011-2019 Fajar Chandra. All rights reserved.
+  Released under MIT License.
+  http://www.opensource.org/licenses/mit-license.php
+
+  Note: Width, height, left, and top properties are handled by the 
+  plugin. These values might change on the fly.
+*/
+
+:root {
 	--neonbluecolord:#405756 ;
 	--pinkredcolord:#3c051d;
 }

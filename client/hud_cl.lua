@@ -1,6 +1,6 @@
 -- Variables
 local isOpen
-local whisper, normal, shout = 33, 66, 100 
+local whisper, normal, shout = 33, 66, 100
 local microphone = normal -- Change this for default (whisper, normal, shout)
 
 -- ESX Initialization
@@ -16,7 +16,6 @@ if Config.useESX then
 end
 
 if Config.useESX then
-	RegisterNetEvent("esx_status:onTick")
 	AddEventHandler("esx_status:onTick", function(status)
 		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
 			hunger = status.val / 10000
@@ -35,9 +34,9 @@ end
 -- Main Thread
 CreateThread(function()
 	while true do
-        local health 			= GetEntityHealth(ped) - 100
 		local ped 				= PlayerPedId()
 		local player 			= PlayerId()
+		local health 			= GetEntityHealth(ped) - 100
 		local oxygen 			= GetPlayerUnderwaterTimeRemaining(player) * Config.oxygenMax
 		local stamina 			= 100 - GetPlayerSprintStaminaRemaining(player)
 		local armor, id 		= GetPedArmour(ped), GetPlayerServerId(player)
@@ -60,7 +59,6 @@ CreateThread(function()
 				stamina = stamina,
 				hunger = hunger,
 				thirst = thirst,
-				stamina = stamina,
 				oxygen = oxygen,
 				id = id,
 				players = players,
@@ -75,7 +73,6 @@ CreateThread(function()
 				hunger = hunger,
 				thirst = thirst,
 				stress = stress,
-				stamina = stamina,
 				oxygen = oxygen,
 				id = id,
 				players = players,
@@ -105,7 +102,7 @@ CreateThread(function()
 end)
 
 -- NUI callbacks
-RegisterNUICallback('close', function(event)
+RegisterNUICallback('close', function()
 	SetNuiFocus(false, false)
 	isOpen = false
 end)

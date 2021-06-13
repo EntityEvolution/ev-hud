@@ -1,4 +1,4 @@
-local name = "[^4not-pe-hud^7]"
+local name = "[^4ev-hud^7]"
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if GetCurrentResourceName() == resourceName then
@@ -17,6 +17,6 @@ AddEventHandler('onResourceStart', function(resourceName)
 			end
 		end
 	
-		PerformHttpRequest("https://raw.githubusercontent.com/Project-Entity/pe-hud/main/version", checkVersion, "GET")
+		PerformHttpRequest("https://raw.githubusercontent.com/EntityEvolution/ev-hud/main/version", checkVersion, "GET")
 	end
 end)

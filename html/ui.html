@@ -10,7 +10,7 @@
     <!--CSS files-->
     <link rel="stylesheet" href="./css/style.css">
   </head>
-  <body style="background-color: rgb(63, 63, 63);">
+  <body>
     <div class="wrapper">
       <div class="main" id="main">
         <svg class="circle" id="health" width="60" height="60">
@@ -22,8 +22,6 @@
           <circle class="progressplayer armor" id="armor-circle" stroke="#3585DA" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
           <image href="./img/logos/armor.png" height="17" width="17" x="26%" y="46.5%"></image>
         </svg>
-
-        
           <svg class="circle" id="hunger" width="60" height="60">
           <circle class="progressplayer hunger" id="hunger-circle" stroke="#ffa200" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
           <image href="./img/logos/hunger.png" height="17" width="17" x="25.5%" y="46.5%"></image>
@@ -62,18 +60,18 @@
     </div>
 
     <!--Phone menu-->
-    <div class="panel-menu-wrapper">
-      <div id="phone" class="image-container">
+    <div id="phone" class="panel-menu-wrapper">
+      <div class="image-container">
         <img class="image-panel-background" src="./img/background.png" alt="Background">
         <img class="image-panel" src="./img/phone.png" alt="Phone">
         <div class="image-time-container">
-          <span class="image-time">10:20</span>
+          <span id="time" class="image-time">10:20</span>
         </div>
         <span class="image-title">Settings</span>
         <span class="image-exit"></span>
         <div class="image-wrapper">
           <div class="button-container">
-            <button class="invert-btn">
+            <button class="invert-btn" aria-label="Invert colors">
               <svg
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -86,65 +84,64 @@
             </svg>
             </button>
             <label class="switch-top">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-health" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-health" src="./img/logos/health.png" alt="health"></img>
+              <img class="slider-image" id="slider-health" src="./img/logos/health.png" alt="health"></img>
               <p class="switch-title">Health</p>
             </label>
             <label class="switch-top">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-armor" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-armor" src="./img/logos/armor.png" alt="armor"></img>
+              <img class="slider-image"id="slider-armor" src="./img/logos/armor.png" alt="armor"></img>
               <p class="switch-title">Armor</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-stamina" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-stamina" src="./img/logos/stamina.png" alt="stamina"></img>
+              <img class="slider-image" id="slider-stamina" src="./img/logos/stamina.png" alt="stamina"></img>
               <p class="switch-title">Stamina</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-oxygen" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-oxygen" src="./img/logos/oxygen.png" alt="oxygen"></img>
+              <img class="slider-image" id="slider-oxygen" src="./img/logos/oxygen.png" alt="oxygen"></img>
               <p class="switch-title">Oxygen</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-microphone" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-microphone" src="./img/logos/microphone.png" alt="microphone"></img>
+              <img class="slider-image" id="slider-microphone" src="./img/logos/microphone.png" alt="microphone"></img>
               <p class="switch-title">Microphone</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-cinematic" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
+              <img class="slider-image" id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
               <p class="switch-title">Cinema</p>
             </label>
-
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-id" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-id" src="./img/logos/id.png" alt="id"></img>
+              <img class="slider-image" id="slider-id" src="./img/logos/id.png" alt="id"></img>
               <p class="switch-title">ID</p>
             </label>
 
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-hunger" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-hunger" src="./img/logos/hunger.png" alt="hunger"></img>
+              <img class="slider-image" id="slider-hunger" src="./img/logos/hunger.png" alt="hunger"></img>
               <p class="switch-title">Hunger</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-thirst" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-thirst" src="./img/logos/thirst.png" alt="thirst"></img>
+              <img class="slider-image" id="slider-thirst" src="./img/logos/thirst.png" alt="thirst"></img>
               <p class="switch-title">Thirst</p>
             </label>
             <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
+              <input id="check-stress" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-stress" src="./img/logos/stress.png" alt="stress"></img>
+              <img class="slider-image" id="slider-stress" src="./img/logos/stress.png" alt="stress"></img>
               <p class="switch-title">Stress</p>
             </label>
 

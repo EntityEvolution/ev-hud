@@ -106,7 +106,6 @@ $(function() {
       localStorage.setItem("microphoneLeft", dragpositionMicrophoneLeft);
     }
   });
-  $("#phone").draggable();
 });
 
 // Switches & Cases

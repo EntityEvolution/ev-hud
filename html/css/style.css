@@ -101,9 +101,9 @@
 /* Phone UI Panel */
 .panel-menu-wrapper {
   position: absolute;
-  bottom: 10%;
-  left: 0%;
-  height: 75%;
+  bottom: 3%;
+  left: -50%;
+  height: 80%;
   width: 100%;
 }
 
@@ -112,12 +112,18 @@
   justify-content: center;
   width: 20%;
   margin-left: 1%;
+  left: 0%;
+}
+
+@keyframes slide {
+  0% { left: -50%; }
+  100% { left: 0; }
 }
 
 .image-panel {
   display: flex;
   width: 40vh;
-  height: auto;
+  height: 100%;
   z-index: 0;
 }
 
@@ -157,7 +163,7 @@
 .image-exit {
   position: absolute;
   font-size: 2.0vh;
-  width: 50%;
+  width: 10%;
   bottom: 4.5%;
   border-bottom: 0.8vh solid var(--scrollbar);
   border-radius: 6px;
@@ -280,84 +286,12 @@ input:checked + .slider {
   font-size: 2vh;
 }
 
-#slider-health {
+.slider-image {
   position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-armor {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-hunger {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-stress {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-thirst {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-stamina {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-oxygen {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-microphone {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-id {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
-}
-
-#slider-cinematic {
-  position: relative;
-  top: 25%;
-  left: 0;
-  height: 5vh;
-  width: 5vh;
+  margin-right: 5%;
+  top: 20%;
+  height: 6vh;
+  width: 6vh;
 }
 
 /* Colorpicker */

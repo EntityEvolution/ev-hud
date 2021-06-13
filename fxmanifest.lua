@@ -22,5 +22,6 @@ files {
 	'html/css/*.css',
 	'html/fonts/*.ttf',
 	'html/js/*.js',
-	'html/img/*.png'
+	'html/img/*.png',
+	'html/img/logos/*.png'
 }

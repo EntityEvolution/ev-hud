@@ -4,6 +4,32 @@
   src: url('../fonts/KumbhSans-Regular.ttf');
 }
 
+:root {
+  --scrollbar: #8f8f8f;
+  --hover: #494949;
+  --background: 0;
+  --button: #21242d;
+  --svg: #ffce45;
+  --text: #000000;
+  --reset: #f0f0f0;
+  --select: #E6E8EA;
+  --hover-button: #ccc;
+}
+
+.dark-mode {
+  --scrollbar: #cccccc;
+  --hover: #dddddd;
+  --content-title-color: --theme-color;
+  --background: 0.85;
+  --button: #e6e6e6;
+  --svg: #242424;
+  --text: #ffffff;
+  --reset: #545454;
+  --select: #87888a;
+  --hover-button: rgb(107, 107, 107);
+}
+
+
 /* Scroll Bar */
 ::-webkit-scrollbar {
   width: 0.5vh;
@@ -11,16 +37,16 @@
 
 ::-webkit-scrollbar-track {
   border-radius: 6px;
-  background-color: rgb(143, 143, 143);
+  background-color: var(--scrollbar);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--scrollbar);
   border-radius: 12px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--hover);
 }
 
 /* Hud */
@@ -36,18 +62,6 @@
 
 .main {
   position: relative;
-}
-
-.time {
-  display: flex;
-  justify-content: center;
-  margin-top: 1%;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 2vw;
-  font-family: Kum;
-  font-weight: bolder;
-  color:white;
 }
 
 .idnumber {
@@ -104,6 +118,14 @@
   display: flex;
   width: 40vh;
   height: auto;
+  z-index: 0;
+}
+
+.image-panel-background {
+  position: absolute;
+  width: 40vh;
+  height: auto;
+  filter: invert(var(--background));
 }
 
 .image-time-container {
@@ -119,6 +141,7 @@
   font-size: 1.3vh;
   font-family: Kum;
   font-weight: bolder;
+  color: var(--text);
 }
 
 .image-title {
@@ -128,6 +151,7 @@
   font-weight: bolder;
   top: 9%;
   border-bottom: 2px solid gray;
+  color: var(--text);
 }
 
 .image-exit {
@@ -135,13 +159,13 @@
   font-size: 2.0vh;
   width: 50%;
   bottom: 4.5%;
-  border-bottom: 1vh solid gray;
+  border-bottom: 0.8vh solid var(--scrollbar);
   border-radius: 6px;
   transition: 0.2s;
 }
 
 .image-exit:hover {
-  border-bottom: 1vh solid rgb(73, 73, 73);
+  border-bottom: 0.8vh solid var(--hover);
 }
 
 .image-wrapper {
@@ -158,14 +182,49 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: transparent;
+  color: var(--text);
 }
 
 /* Buttons */
+.invert-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 90%;
+  height: 5vh;
+
+  border-radius: 8px;
+  border: none;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 15%;
+
+  background-color: var(--button);/*DBDBDB*/
+
+  font-size: 0.8vw;
+  font-family: Kum;
+  font-weight: 600;
+
+  transition: 0.4s;
+}
+
+.invert-btn svg {
+  width: 3vh;
+  flex-shrink: 0;
+  fill: #ffce45;
+  stroke: var(--svg);
+  transition: 0.5s;
+}
+
 .switch {
   position: relative;
   display: flex;
   justify-content: center;
-  flex: 1 0 40%; /* explanation below */
+  flex: 1 0 40%;
   height: 11vh;
   margin-top: 15%;
   margin-left: 5%;
@@ -176,7 +235,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  flex: 1 0 40%; /* explanation below */
+  flex: 1 0 40%;
   height: 11vh;
   margin-top: 5%;
   margin-left: 5%;
@@ -307,7 +366,7 @@ input:checked + .slider {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1 0 60%; /* explanation below */
+  flex: 1 0 80%;
   height: 6vh;
 
   border-radius: 12px;
@@ -322,13 +381,66 @@ input:checked + .slider {
   font-size: 1vw;
   font-family: Kum;
   font-weight: 600;
+
+  color: var(--text-mood);
+  background-color: var(--reset);
 }
 
 .options {
   font-size: 0.8vw;
-  background-color: #E6E8EA;
+  background-color: var(--select);
 }
 
 select:focus {
   outline: none;
+}
+
+.reset-buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 40%; /* explanation below */
+  height: 5vh;
+
+  border-radius: 8px;
+  border: none;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+
+  font-size: 0.8vw;
+  font-family: Kum;
+  font-weight: 600;
+
+  transition: 0.4s;
+
+  color: var(--text-mood);
+  background-color: var(--reset);
+}
+
+.reset-buttons:hover {
+  background-color: var(--hover-button);
+}
+
+.reset-buttons:after {
+  content: "";
+  background: #f1f1f1;
+  position: absolute;
+  padding-left: 50%;
+  padding-right: 50%;
+  padding-top: 25%;
+  padding-bottom: 25%;
+  opacity: 0;
+  transition: all 0.5s;
+  border-radius: 6px;
+}
+
+.reset-buttons:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
 }

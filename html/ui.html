@@ -9,7 +9,6 @@
 
     <!--CSS files-->
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/wheelcolorpicker.css"/>
   </head>
   <body style="background-color: rgb(63, 63, 63);">
     <div class="wrapper">
@@ -65,14 +64,27 @@
     <!--Phone menu-->
     <div class="panel-menu-wrapper">
       <div id="phone" class="image-container">
+        <img class="image-panel-background" src="./img/background.png" alt="Background">
+        <img class="image-panel" src="./img/phone.png" alt="Phone">
         <div class="image-time-container">
           <span class="image-time">10:20</span>
         </div>
         <span class="image-title">Settings</span>
         <span class="image-exit"></span>
-        <img class="image-panel" src="./img/phone.png" alt="Phone">
         <div class="image-wrapper">
           <div class="button-container">
+            <button class="invert-btn">
+              <svg
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+            </button>
             <label class="switch-top">
               <input id="check-seatbelt" type="checkbox" checked>
               <span class="slider"></span>
@@ -85,33 +97,12 @@
               <img id="slider-armor" src="./img/logos/armor.png" alt="armor"></img>
               <p class="switch-title">Armor</p>
             </label>
-
-            <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-hunger" src="./img/logos/hunger.png" alt="hunger"></img>
-              <p class="switch-title">Hunger</p>
-            </label>
-            <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-stress" src="./img/logos/stress.png" alt="stress"></img>
-              <p class="switch-title">Stress</p>
-            </label>
-
-            <label class="switch">
-              <input id="check-seatbelt" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-thirst" src="./img/logos/thirst.png" alt="thirst"></img>
-              <p class="switch-title">Thirst</p>
-            </label>
             <label class="switch">
               <input id="check-seatbelt" type="checkbox" checked>
               <span class="slider"></span>
               <img id="slider-stamina" src="./img/logos/stamina.png" alt="stamina"></img>
               <p class="switch-title">Stamina</p>
             </label>
-
             <label class="switch">
               <input id="check-seatbelt" type="checkbox" checked>
               <span class="slider"></span>
@@ -124,6 +115,12 @@
               <img id="slider-microphone" src="./img/logos/microphone.png" alt="microphone"></img>
               <p class="switch-title">Microphone</p>
             </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
+              <p class="switch-title">Cinema</p>
+            </label>
 
             <label class="switch">
               <input id="check-seatbelt" type="checkbox" checked>
@@ -131,11 +128,24 @@
               <img id="slider-id" src="./img/logos/id.png" alt="id"></img>
               <p class="switch-title">ID</p>
             </label>
+
             <label class="switch">
               <input id="check-seatbelt" type="checkbox" checked>
               <span class="slider"></span>
-              <img id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
-              <p class="switch-title">Cinema</p>
+              <img id="slider-hunger" src="./img/logos/hunger.png" alt="hunger"></img>
+              <p class="switch-title">Hunger</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-thirst" src="./img/logos/thirst.png" alt="thirst"></img>
+              <p class="switch-title">Thirst</p>
+            </label>
+            <label class="switch">
+              <input id="check-seatbelt" type="checkbox" checked>
+              <span class="slider"></span>
+              <img id="slider-stress" src="./img/logos/stress.png" alt="stress"></img>
+              <p class="switch-title">Stress</p>
             </label>
 
             <select class="selection" id="selection">
@@ -149,7 +159,8 @@
               <option class="options" value="microphone-option">Microphone</option>
             </select>
 
-
+            <button class="reset-buttons">Reset colors</button>
+            <button class="reset-buttons">Reset positions</button>
           </div>
         </div>
       </div>
@@ -170,7 +181,7 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="./js/config.js"></script>
+    <script type="text/javascript" src="./js/nui.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
-    <script type="text/javascript" src="./js/jquery.wheelcolorpicker.js"></script>
   </body>
 </html>

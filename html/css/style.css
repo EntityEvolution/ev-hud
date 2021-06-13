@@ -102,7 +102,7 @@
 .panel-menu-wrapper {
   position: absolute;
   bottom: 3%;
-  left: -50%;
+  left: 0%;
   height: 80%;
   width: 100%;
 }
@@ -132,6 +132,36 @@
   width: 40vh;
   height: auto;
   filter: invert(var(--background));
+}
+
+.alert {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+  position: absolute;
+  width: 13%;
+  height: 5%;
+  border-radius: 6px;
+  background-color: #8a8a8bea;
+  color: white;
+  font-size: 0.7vw;
+  font-family: Kum;
+  top: -1.5%;
+  animation: fadeIn 1.5s forwards;
+  animation-delay: 0s;
+  margin-right: 0.5%;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .image-time-container {
@@ -329,7 +359,32 @@ select:focus {
   outline: none;
 }
 
-.reset-buttons {
+input[type="color" i] {
+  appearance: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 90%; /* explanation below */
+  height: 8vh;
+
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+
+  border-radius: 6px;
+  
+  background-color:var(--reset);
+  cursor: default;
+  color: var(--button);
+  border-width: 0rem;
+  border-style: solid;
+  border-color: var(--button);
+  padding: 0rem;
+}
+
+.reset-buttons,
+.accept-button {
   position: relative;
   display: flex;
   justify-content: center;
@@ -372,7 +427,27 @@ select:focus {
   border-radius: 6px;
 }
 
-.reset-buttons:active:after {
+.accept-button:hover {
+  background-color: var(--hover-button);
+  color: rgb(90, 216, 0);
+  font-size: 1.5vw;
+}
+
+.accept-button:after {
+  content: "";
+  background: #f1f1f1;
+  position: absolute;
+  padding-left: 50%;
+  padding-right: 50%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  opacity: 0;
+  transition: all 0.5s;
+  border-radius: 6px;
+} 
+
+.reset-buttons:active:after,
+.accept-button:active:after {
   padding: 0;
   margin: 0;
   opacity: 1;

@@ -64,6 +64,9 @@
       <div class="image-container">
         <img class="image-panel-background" src="./img/background.png" alt="Background">
         <img class="image-panel" src="./img/phone.png" alt="Phone">
+        <div class="alert">
+          <span class="alert-text">Settings have been saved!</span>
+      </div>
         <div class="image-time-container">
           <span id="time" class="image-time">10:20</span>
         </div>
@@ -155,9 +158,12 @@
               <option class="options" value="oxygen-option">Oxygen</option>
               <option class="options" value="microphone-option">Microphone</option>
             </select>
-
             <button class="reset-buttons">Reset colors</button>
             <button class="reset-buttons">Reset positions</button>
+            <input class="colorpicker" type="color" value="#ff0000">
+
+            <button class="accept-button">&#10004;</button>
+            <audio id="audio" src="./img/noti.wav"></audio>
           </div>
         </div>
       </div>

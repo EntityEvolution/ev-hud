@@ -22,6 +22,7 @@ files {
 	'html/css/*.css',
 	'html/fonts/*.ttf',
 	'html/js/*.js',
+	'html/img/noti.wav',
 	'html/img/*.png',
 	'html/img/logos/*.png'
 }

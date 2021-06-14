@@ -34,7 +34,6 @@ window.addEventListener('load', () => {
     document.getElementById("thirst-option").style.display = "none";
     document.getElementById("stress-option").style.display = "none";
   };
-  console.log(armor)
 });
 
 // Load draggable
@@ -53,6 +52,8 @@ window.addEventListener('load', () => {
     };
   };
   startSliders();
+  health = JSON.parse(localStorage.getItem("sliderHealth"))
+  armor = JSON.parse(localStorage.getItem("sliderArmor"))
 });
 
 // Switches & Cases
@@ -129,6 +130,7 @@ const startColorpicker = () => {
 }
 
 const startSliders = () => {
+
   if (JSON.parse(localStorage.getItem("sliderHealth")) == null) {
     checkHealth.checked = true;
   } else {
@@ -139,11 +141,11 @@ const startSliders = () => {
       document.getElementById("health").style.display = "none"
     }
   }
-  
+
   if (JSON.parse(localStorage.getItem("sliderArmor")) == null) {
     checkArmor.checked = true;
   } else {
-    checkArmor.checked = JSON.parse(localStorage.getItem("sliderArmor"));
+    checkArmor.checked = JSON.parse(localStorage.getItem("sliderArmor")); 
     if (JSON.parse(localStorage.getItem("sliderArmor"))) {
       document.getElementById("armor").style.display = "";
     } else {
@@ -151,96 +153,7 @@ const startSliders = () => {
     }
   }
 
-  if (JSON.parse(localStorage.getItem("sliderStamina")) == null) {
-    checkStamina.checked = true;
-  } else {
-    checkStamina.checked = JSON.parse(localStorage.getItem("sliderStamina"));
-    if (JSON.parse(localStorage.getItem("sliderStamina"))) {
-      document.getElementById("stamina").style.display = "";
-    } else {
-      document.getElementById("stamina").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderOxygen")) == null) {
-    checkOxygen.checked = true;
-  } else {
-    checkOxygen.checked = JSON.parse(localStorage.getItem("sliderOxygen"));
-    if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
-      document.getElementById("oxygen").style.display = "";
-    } else {
-      document.getElementById("oxygen").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderMic")) == null) {
-    checkMic.checked = true;
-  } else {
-    checkMic.checked = JSON.parse(localStorage.getItem("sliderMic"));
-    if (JSON.parse(localStorage.getItem("sliderMic"))) {
-      document.getElementById("microphone").style.display = "";
-    } else {
-      document.getElementById("microphone").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderId")) == null) {
-    checkId.checked = true;
-  } else {
-    checkId.checked = JSON.parse(localStorage.getItem("sliderId"));
-    if (JSON.parse(localStorage.getItem("sliderId"))) {
-      document.getElementById("id").style.display = "";
-    } else {
-      document.getElementById("id").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderCinematic")) == null) {
-    checkCinematic.checked = false;
-  } else {
-    checkCinematic.checked = JSON.parse(localStorage.getItem("sliderCinematic"));
-    if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
-      document.getElementById("oxygen").style.display = "";
-    } else {
-      document.getElementById("oxygen").style.display = "none"
-    }
-  }
-
-  if (Config.useESX) {
-    if (JSON.parse(localStorage.getItem("sliderHunger")) == null) {
-      checkHunger.checked = true;
-    } else {
-      checkHunger.checked = JSON.parse(localStorage.getItem("sliderHunger"));
-      if (JSON.parse(localStorage.getItem("sliderHunger"))) {
-        document.getElementById("hunger").style.display = "";
-      } else {
-        document.getElementById("hunger").style.display = "none"
-      }
-    }
-
-    if (JSON.parse(localStorage.getItem("sliderThirst")) == null) {
-      checkThirst.checked = true;
-    } else {
-      checkThirst.checked = JSON.parse(localStorage.getItem("sliderThirst"));
-      if (JSON.parse(localStorage.getItem("sliderThirst"))) {
-        document.getElementById("thirst").style.display = "";
-      } else {
-        document.getElementById("thirst").style.display = "none"
-      }
-    }
-    if (Config.useStress) {
-      if (JSON.parse(localStorage.getItem("sliderStress")) == null) {
-        checkStress.checked = true;
-      } else {
-        checkStress.checked = JSON.parse(localStorage.getItem("sliderStress"));
-        if (JSON.parse(localStorage.getItem("sliderStress"))) {
-          document.getElementById("stress").style.display = "";
-        } else {
-          document.getElementById("stress").style.display = "none"
-        }
-      }
-    };
-  };
+  
 }
 
 // https://stackoverflow.com/a/3627747
@@ -391,7 +304,6 @@ window.addEventListener('load', () => {
     cinematic = checkCinematic.checked
     if (cinematic) {
       document.getElementById("cinematic").style.display = "block";
-      console.log("test")
     } else {
       document.getElementById("cinematic").style.display = "none"
     }

@@ -49,6 +49,25 @@
   background: var(--hover);
 }
 
+/* Cinematic bars*/
+.top {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  left: 0%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  left: 0%;
+}
+
 /* Hud */
 .wrapper {
   position: absolute;

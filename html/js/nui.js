@@ -90,9 +90,23 @@ document.querySelector('.accept-button').addEventListener('click', () => {
                 localStorage.setItem("dragStressLeft", dragLeft);
             };
         };
+
+        // Save sliders data
+        localStorage.setItem("sliderHealth", health)
+        localStorage.setItem("sliderArmor", armor)
+        localStorage.setItem("sliderStamina", stamina)
+        localStorage.setItem("sliderOxygen", oxygen)
+        localStorage.setItem("sliderMic", mic)
+        localStorage.setItem("sliderId", id)
+        localStorage.setItem("sliderCinematic", cinematic)
+        if (Config.useESX) {
+            localStorage.setItem("sliderHunger", hunger)
+            localStorage.setItem("sliderThirst", thirst)
+            if (Config.useStress) {
+                localStorage.setItem("sliderStress", stress)
+            };
+        };
     }, 5600)
-
-
 });
 
 document.getElementById('reset-color').addEventListener('click', () => {

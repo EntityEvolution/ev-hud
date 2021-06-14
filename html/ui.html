@@ -9,9 +9,14 @@
 
     <!--CSS files-->
     <link rel="stylesheet" href="./css/style.css">
-    <style>#phone {display: none ;}</style>
+    <style>#phone, #cinematic {display: none ;}</style>
   </head>
   <body>
+    <div id="cinematic">
+      <div class="top" id="top"></div>
+      <div class="bottom" id="bottom"></div>
+    </div>
+
     <div class="wrapper">
       <div class="main" id="main">
         <svg class="circle" id="health" width="60" height="60">
@@ -158,6 +163,7 @@
               <option class="options" value="stamina-option">Stamina</option>
               <option class="options" value="oxygen-option">Oxygen</option>
               <option class="options" value="microphone-option">Microphone</option>
+              <option class="options" value="id-option">Id</option>
             </select>
             <button id="reset-color" class="reset-buttons">Reset colors</button>
             <button id="reset-position" class="reset-buttons">Reset positions</button>
@@ -169,11 +175,6 @@
         </div>
       </div>
     </div>
-
-    <!--<div id="cinematic">
-      <div class="top" id="top"></div>
-      <div class="bottom" id="bottom"></div>
-    </div>-->
 
     <!--Javascript files-->
     <script

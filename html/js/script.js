@@ -1,7 +1,26 @@
+// Sliders vars
+const checkHealth = document.getElementById("check-health")
+const checkArmor = document.getElementById("check-armor")
+const checkStamina = document.getElementById("check-stamina")
+const checkOxygen = document.getElementById("check-oxygen")
+const checkMic = document.getElementById("check-microphone")
+const checkCinematic = document.getElementById("check-cinematic")
+const checkId = document.getElementById("check-id")
+const checkHunger = document.getElementById("check-hunger")
+const checkThirst = document.getElementById("check-thirst")
+const checkStress = document.getElementById("check-stress")
+
+let health, armor, stamina, oxygen, mic, id, hunger, thirst, stress;
+health = armor = stamina = oxygen = mic = id = hunger = thirst = stress = true;
+
+let cinematic = false;
+
+// Load ESX
 window.addEventListener('load', () => {
   if (Config.useESX && !Config.useStress) {
     document.getElementById("stress").style.display = "none";
     document.getElementById("slider-stress").style.display = "none";
+    document.getElementById("stress-option").style.display = "none";
   } else if (Config.useESX && Config.useStress) {
     return
   } else {
@@ -11,7 +30,11 @@ window.addEventListener('load', () => {
     document.getElementById("slider-hunger").style.display = "none";
     document.getElementById("slider-thirst").style.display = "none";
     document.getElementById("slider-stress").style.display = "none";
+    document.getElementById("hunger-option").style.display = "none";
+    document.getElementById("thirst-option").style.display = "none";
+    document.getElementById("stress-option").style.display = "none";
   };
+  console.log(armor)
 });
 
 // Load draggable
@@ -29,8 +52,7 @@ window.addEventListener('load', () => {
       $('#stress').draggable();
     };
   };
-
-  startColorpicker();
+  startSliders();
 });
 
 // Switches & Cases
@@ -40,6 +62,7 @@ window.addEventListener("message", function(event) {
       startColorpicker();
       startColors();
       startPositions();
+      startSliders();
     break;
 
     // Send Data
@@ -103,6 +126,121 @@ const startColorpicker = () => {
   colorPicker.value = rgb2hex($('#health-circle').css('stroke'));
   colorPicker.addEventListener("input", updateColorPicker, false);
   colorPicker.select();
+}
+
+const startSliders = () => {
+  if (JSON.parse(localStorage.getItem("sliderHealth")) == null) {
+    checkHealth.checked = true;
+  } else {
+    checkHealth.checked = JSON.parse(localStorage.getItem("sliderHealth")); 
+    if (JSON.parse(localStorage.getItem("sliderHealth"))) {
+      document.getElementById("health").style.display = "";
+    } else {
+      document.getElementById("health").style.display = "none"
+    }
+  }
+  
+  if (JSON.parse(localStorage.getItem("sliderArmor")) == null) {
+    checkArmor.checked = true;
+  } else {
+    checkArmor.checked = JSON.parse(localStorage.getItem("sliderArmor"));
+    if (JSON.parse(localStorage.getItem("sliderArmor"))) {
+      document.getElementById("armor").style.display = "";
+    } else {
+      document.getElementById("armor").style.display = "none"
+    }
+  }
+
+  if (JSON.parse(localStorage.getItem("sliderStamina")) == null) {
+    checkStamina.checked = true;
+  } else {
+    checkStamina.checked = JSON.parse(localStorage.getItem("sliderStamina"));
+    if (JSON.parse(localStorage.getItem("sliderStamina"))) {
+      document.getElementById("stamina").style.display = "";
+    } else {
+      document.getElementById("stamina").style.display = "none"
+    }
+  }
+
+  if (JSON.parse(localStorage.getItem("sliderOxygen")) == null) {
+    checkOxygen.checked = true;
+  } else {
+    checkOxygen.checked = JSON.parse(localStorage.getItem("sliderOxygen"));
+    if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
+      document.getElementById("oxygen").style.display = "";
+    } else {
+      document.getElementById("oxygen").style.display = "none"
+    }
+  }
+
+  if (JSON.parse(localStorage.getItem("sliderMic")) == null) {
+    checkMic.checked = true;
+  } else {
+    checkMic.checked = JSON.parse(localStorage.getItem("sliderMic"));
+    if (JSON.parse(localStorage.getItem("sliderMic"))) {
+      document.getElementById("microphone").style.display = "";
+    } else {
+      document.getElementById("microphone").style.display = "none"
+    }
+  }
+
+  if (JSON.parse(localStorage.getItem("sliderId")) == null) {
+    checkId.checked = true;
+  } else {
+    checkId.checked = JSON.parse(localStorage.getItem("sliderId"));
+    if (JSON.parse(localStorage.getItem("sliderId"))) {
+      document.getElementById("id").style.display = "";
+    } else {
+      document.getElementById("id").style.display = "none"
+    }
+  }
+
+  if (JSON.parse(localStorage.getItem("sliderCinematic")) == null) {
+    checkCinematic.checked = false;
+  } else {
+    checkCinematic.checked = JSON.parse(localStorage.getItem("sliderCinematic"));
+    if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
+      document.getElementById("oxygen").style.display = "";
+    } else {
+      document.getElementById("oxygen").style.display = "none"
+    }
+  }
+
+  if (Config.useESX) {
+    if (JSON.parse(localStorage.getItem("sliderHunger")) == null) {
+      checkHunger.checked = true;
+    } else {
+      checkHunger.checked = JSON.parse(localStorage.getItem("sliderHunger"));
+      if (JSON.parse(localStorage.getItem("sliderHunger"))) {
+        document.getElementById("hunger").style.display = "";
+      } else {
+        document.getElementById("hunger").style.display = "none"
+      }
+    }
+
+    if (JSON.parse(localStorage.getItem("sliderThirst")) == null) {
+      checkThirst.checked = true;
+    } else {
+      checkThirst.checked = JSON.parse(localStorage.getItem("sliderThirst"));
+      if (JSON.parse(localStorage.getItem("sliderThirst"))) {
+        document.getElementById("thirst").style.display = "";
+      } else {
+        document.getElementById("thirst").style.display = "none"
+      }
+    }
+    if (Config.useStress) {
+      if (JSON.parse(localStorage.getItem("sliderStress")) == null) {
+        checkStress.checked = true;
+      } else {
+        checkStress.checked = JSON.parse(localStorage.getItem("sliderStress"));
+        if (JSON.parse(localStorage.getItem("sliderStress"))) {
+          document.getElementById("stress").style.display = "";
+        } else {
+          document.getElementById("stress").style.display = "none"
+        }
+      }
+    };
+  };
 }
 
 // https://stackoverflow.com/a/3627747
@@ -201,6 +339,103 @@ let updateColorPicker = (event) => {
     break;
   };
 }
+
+// Sliders saving
+window.addEventListener('load', () => {
+  checkHealth.addEventListener("click", () => {
+    health = checkHealth.checked
+    if (health) {
+      document.getElementById("health").style.display = "";
+    } else {
+      document.getElementById("health").style.display = "none"
+    }
+  })
+
+  checkArmor.addEventListener("click", () => {
+    armor = checkArmor.checked
+    if (armor) {
+      document.getElementById("armor").style.display = "";
+    } else {
+      document.getElementById("armor").style.display = "none"
+    }
+  })
+
+  checkStamina.addEventListener("click", () => {
+    stamina = checkStamina.checked
+    if (stamina) {
+      document.getElementById("stamina").style.display = "";
+    } else {
+      document.getElementById("stamina").style.display = "none"
+    }
+  })
+
+  checkOxygen.addEventListener("click", () => {
+    oxygen = checkOxygen.checked
+    if (oxygen) {
+      document.getElementById("oxygen").style.display = "";
+    } else {
+      document.getElementById("oxygen").style.display = "none"
+    }
+  })
+
+  checkMic.addEventListener("click", () => {
+    mic = checkMic.checked
+    if (mic) {
+      document.getElementById("microphone").style.display = "";
+    } else {
+      document.getElementById("microphone").style.display = "none"
+    }
+  })
+
+  checkCinematic.addEventListener("click", () => {
+    cinematic = checkCinematic.checked
+    if (cinematic) {
+      document.getElementById("cinematic").style.display = "block";
+      console.log("test")
+    } else {
+      document.getElementById("cinematic").style.display = "none"
+    }
+  })
+
+  checkId.addEventListener("click", () => {
+    id = checkId.checked
+    if (id) {
+      document.getElementById("id").style.display = "";
+    } else {
+      document.getElementById("id").style.display = "none"
+    }
+  })
+
+  if (Config.useESX) {
+    checkHunger.addEventListener("click", () => {
+      hunger = checkHunger.checked
+      if (health) {
+        document.getElementById("hunger").style.display = "";
+      } else {
+        document.getElementById("hunger").style.display = "none"
+      }
+    })
+    
+    checkThirst.addEventListener("click", () => {
+      thirst = checkThirst.checked
+      if (thirst) {
+        document.getElementById("thirst").style.display = "";
+      } else {
+        document.getElementById("thirst").style.display = "none"
+      }
+    })
+    if (Config.useStress) {
+      checkStress.addEventListener("click", () => {
+        stress = checkStress.checked
+        if (stress) {
+          document.getElementById("stress").style.display = "";
+        } else {
+          document.getElementById("stress").style.display = "none"
+        }
+      })
+    };
+  };
+})
 
 let progressCircle = (percent, element) => {
   const circle = document.querySelector(element);

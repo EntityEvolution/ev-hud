@@ -85,6 +85,14 @@ window.addEventListener("message", function(event) {
     case "microphone":
       progressCircle(event.data.microphone, ".microphone");
     break;
+
+    case "startESX":
+      Config.useESX = true
+    break;
+
+    case "startStress":
+      Config.useStress = true
+    break;
   }
 });
 

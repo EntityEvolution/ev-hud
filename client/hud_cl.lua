@@ -62,7 +62,7 @@ CreateThread(function()
 				oxygen = oxygen,
 				id = id,
 				players = players,
-				time = hours .. " : " .. minutes
+				time = hours .. ":" .. minutes
 			})
 		elseif Config.useESX and Config.useStress then
 			SendNUIMessage({
@@ -76,7 +76,7 @@ CreateThread(function()
 				oxygen = oxygen,
 				id = id,
 				players = players,
-				time = hours .. " : " .. minutes
+				time = hours .. ":" .. minutes
 			})
 		else
 			SendNUIMessage({
@@ -103,8 +103,10 @@ end)
 
 -- NUI callbacks
 RegisterNUICallback('close', function()
-	SetNuiFocus(false, false)
-	isOpen = false
+	if isOpen then
+		SetNuiFocus(false, false)
+		isOpen = false
+	end
 end)
 
 -- Opening Menu
@@ -138,7 +140,7 @@ RegisterCommand('+levelVoice', function()
 	end
 end)
 
-RegisterKeyMapping('+levelVoice', 'Adjust just the voice range', 'keyboard', Config.voiceKey)
+RegisterKeyMapping('+levelVoice', Config.keyDesc, 'keyboard', Config.voiceKey)
 
 -- Handlers
 AddEventHandler('playerSpawned', function()

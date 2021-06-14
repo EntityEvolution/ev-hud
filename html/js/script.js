@@ -17,11 +17,11 @@ let cinematic = false;
 
 // Load ESX
 window.addEventListener('load', () => {
-  if (Config.useESX && !Config.useStress) {
+  if (useESX && !useStress) {
     document.getElementById("stress").style.display = "none";
     document.getElementById("slider-stress").style.display = "none";
     document.getElementById("stress-option").style.display = "none";
-  } else if (Config.useESX && Config.useStress) {
+  } else if (useESX && useStress) {
     return
   } else {
     document.getElementById("hunger").style.display = "none";
@@ -44,10 +44,10 @@ window.addEventListener('load', () => {
   $("#oxygen").draggable();
   $("#id").draggable();
   $("#microphone").draggable();
-  if (Config.useESX) {
+  if (useESX) {
     $('#hunger').draggable();
     $('#thirst').draggable();
-    if (Config.useStress) {
+    if (useStress) {
       $('#stress').draggable();
     };
   };
@@ -72,10 +72,10 @@ window.addEventListener("message", function(event) {
       progressCircle(event.data.players, ".id");
       $("#idnumber").text(event.data.id);
       $("#time").text(event.data.time);
-      if (Config.useESX) {
+      if (useESX) {
         progressCircle(event.data.hunger, ".hunger");
         progressCircle(event.data.thirst, ".thirst");
-        if (Config.useStress) {
+        if (useStress) {
           progressCircle(event.data.stress, ".stress");
         };
       };
@@ -86,11 +86,11 @@ window.addEventListener("message", function(event) {
     break;
 
     case "startESX":
-      Config.useESX = true
+      useESX = true
     break;
 
     case "startStress":
-      Config.useStress = true
+      useStress = true
     break;
   }
 });
@@ -103,10 +103,10 @@ const startColors = () => {
   $('#oxygen-circle').css('stroke', localStorage.getItem("oxygenColor"));
   $('#id-circle').css('stroke', localStorage.getItem("idColor"));
   $('#microphone-circle').css('stroke', localStorage.getItem("microphoneColor"));
-  if (Config.useESX) {
+  if (useESX) {
     $('#hunger-circle').css('stroke', localStorage.getItem("hungerColor"));
     $('#thirst-circle').css('stroke', localStorage.getItem("thirstColor"));
-    if (Config.useStress) {
+    if (useStress) {
       $("#stress-circle").css('stroke', localStorage.getItem("stressColor"));
     };
   };
@@ -119,10 +119,10 @@ const startPositions = () => {
   $("#oxygen").animate({ top: localStorage.getItem("dragOxygenTop"), left: localStorage.getItem("dragOxygenLeft")});
   $("#microphone").animate({ top: localStorage.getItem("dragMicTop"), left: localStorage.getItem("dragMicLeft")});
   $("#id").animate({ top: localStorage.getItem("dragIdTop"), left: localStorage.getItem("dragIdLeft")});
-  if (Config.useESX) {
+  if (useESX) {
     $("#hunger").animate({ top: localStorage.getItem("dragHungerTop"), left: localStorage.getItem("dragHungerLeft")});
     $("#thirst").animate({ top: localStorage.getItem("dragThirstTop"), left: localStorage.getItem("dragThirstLeft")});
-    if (Config.useStress) {
+    if (useStress) {
       $("#stress").animate({ top: localStorage.getItem("dragStressTop"), left: localStorage.getItem("dragStressLeft")});
     };
   };
@@ -143,10 +143,10 @@ const startSliders = () => {
   mic = JSON.parse(localStorage.getItem("sliderMic"))
   cinematic = JSON.parse(localStorage.getItem("sliderCinematic"))
 
-  if (Config.useESX) {
+  if (useESX) {
     hunger = JSON.parse(localStorage.getItem("sliderHunger"))
     thirst = JSON.parse(localStorage.getItem("sliderThirst"))
-    if (Config.useStress) {
+    if (useStress) {
       stress = JSON.parse(localStorage.getItem("sliderStress"))
     };
   }
@@ -227,7 +227,7 @@ const startSliders = () => {
     }
   }
 
-  if (Config.useESX) {
+  if (useESX) {
     if (JSON.parse(localStorage.getItem("sliderHunger")) == null) {
       checkHunger.checked = true;
     } else {
@@ -249,7 +249,7 @@ const startSliders = () => {
         document.getElementById("thirst").style.display = "none"
       }
     }
-    if (Config.useStress) {
+    if (useStress) {
       if (JSON.parse(localStorage.getItem("sliderStress")) == null) {
         checkStress.checked = true;
       } else {
@@ -426,7 +426,7 @@ window.addEventListener('load', () => {
     }
   })
 
-  if (Config.useESX) {
+  if (useESX) {
     checkHunger.addEventListener("click", () => {
       hunger = checkHunger.checked
       if (health) {
@@ -444,7 +444,7 @@ window.addEventListener('load', () => {
         document.getElementById("thirst").style.display = "none"
       }
     })
-    if (Config.useStress) {
+    if (useStress) {
       checkStress.addEventListener("click", () => {
         stress = checkStress.checked
         if (stress) {

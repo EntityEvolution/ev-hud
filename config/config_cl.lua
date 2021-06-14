@@ -10,8 +10,10 @@ Config.waitSpawn    = 5000 -- Time to set elements back to saved on spawn
 Config.waitResource = 2000 -- Time to set elements back to saved after resource start
 
 -- Variables (Controls)
+Config.voiceCommand = 'levelVoice' -- Voice cycle command name
 Config.voiceKey     = 'z' -- Cycles through modes (has to match your voip script key)
-Config.keyDesc      = 'Adjust the voice range'
+Config.voiceDesc    = 'Adjust the voice range' -- Keybind description
+Config.voiceDefault = 66 -- Whisper: 33, Normal: 66, Shout: 100,
 
 -- Variables (Framework)
 Config.useESX       = false -- Change ESX config to true to use ESX (change ./html/js/config.js Config.useESX to true too)

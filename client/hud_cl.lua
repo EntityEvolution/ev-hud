@@ -1,12 +1,11 @@
 -- Variables
 local isOpen
 local whisper, normal, shout = 33, 66, 100
-local microphone = normal -- Change this for default (whisper, normal, shout)
+local microphone = Config.voiceDefault -- Change this for default (whisper, normal, shout)
 
 -- ESX Initialization
 if Config.useESX then
     ESX              = nil
-
     CreateThread(function()
         while ESX == nil do
             TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -118,7 +117,7 @@ RegisterCommand('hud', function()
 	end
 end)
 
-RegisterCommand('+levelVoice', function()
+RegisterCommand(Config.voiceCommand, function()
 	if (microphone == 33) then
 		microphone = normal
 		SendNUIMessage({
@@ -140,7 +139,7 @@ RegisterCommand('+levelVoice', function()
 	end
 end)
 
-RegisterKeyMapping('+levelVoice', Config.keyDesc, 'keyboard', Config.voiceKey)
+RegisterKeyMapping(Config.voiceCommand, Config.voiceDesc, 'keyboard', Config.voiceKey)
 
 -- Handlers
 AddEventHandler('playerSpawned', function()

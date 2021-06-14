@@ -51,7 +51,6 @@ window.addEventListener('load', () => {
       $('#stress').draggable();
     };
   };
-  startSliders();
 });
 
 // Switches & Cases

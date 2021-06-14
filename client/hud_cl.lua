@@ -107,10 +107,6 @@ RegisterNUICallback('close', function()
 	isOpen = false
 end)
 
-RegisterNUICallback('change', function(data)
-    TriggerEvent('PE:change', data.action)
-end)
-
 -- Opening Menu
 RegisterCommand('hud', function()
 	if not isOpen then

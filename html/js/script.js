@@ -81,6 +81,88 @@ window.addEventListener("message", function(event) {
       };
     break;
 
+    case "isPaused":
+      document.getElementById("health").style.display = "none"
+      document.getElementById("armor").style.display = "none"
+      document.getElementById("stamina").style.display = "none"
+      document.getElementById("oxygen").style.display = "none"
+      document.getElementById("id").style.display = "none"
+      document.getElementById("microphone").style.display = "none"
+      document.getElementById("cinematic").style.display = "none"
+      if (useESX) {
+        document.getElementById("hunger").style.display = "none"
+        document.getElementById("thirst").style.display = "none"
+        if (useStress) {
+          document.getElementById("stress").style.display = "none"
+        }
+      }
+    break;
+
+    case "notPaused":
+      if (JSON.parse(localStorage.getItem("sliderHealth"))) {
+        document.getElementById("health").style.display = "";
+      } else {
+        document.getElementById("health").style.display = "none"
+      }
+
+      if (JSON.parse(localStorage.getItem("sliderArmor"))) {
+        document.getElementById("armor").style.display = "";
+      } else {
+        document.getElementById("armor").style.display = "none"
+      }
+
+      if (JSON.parse(localStorage.getItem("sliderStamina"))) {
+        document.getElementById("stamina").style.display = "";
+      } else {
+        document.getElementById("stamina").style.display = "none"
+      }
+
+      if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
+        document.getElementById("oxygen").style.display = "";
+      } else {
+        document.getElementById("oxygen").style.display = "none"
+      }
+  
+      if (JSON.parse(localStorage.getItem("sliderMic"))) {
+        document.getElementById("microphone").style.display = "";
+      } else {
+        document.getElementById("microphone").style.display = "none"
+      }
+
+      if (JSON.parse(localStorage.getItem("sliderId"))) {
+        document.getElementById("id").style.display = "";
+      } else {
+        document.getElementById("id").style.display = "none"
+      }
+
+      if (JSON.parse(localStorage.getItem("sliderCinematic"))) {
+        document.getElementById("cinematic").style.display = "block";
+      } else {
+        document.getElementById("cinematic").style.display = "none"
+      }
+
+      if (useESX) {
+        if (JSON.parse(localStorage.getItem("sliderHunger"))) {
+          document.getElementById("hunger").style.display = "";
+        } else {
+          document.getElementById("hunger").style.display = "none"
+        }
+        
+        if (JSON.parse(localStorage.getItem("sliderThirst"))) {
+          document.getElementById("thirst").style.display = "";
+        } else {
+          document.getElementById("thirst").style.display = "none"
+        }
+        if (useStress) {
+          if (JSON.parse(localStorage.getItem("sliderStress"))) {
+            document.getElementById("stress").style.display = "";
+          } else {
+            document.getElementById("stress").style.display = "none"
+          }
+        };
+      };
+    break
+
     case "microphone":
       progressCircle(event.data.microphone, ".microphone");
     break;

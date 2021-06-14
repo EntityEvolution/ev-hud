@@ -118,7 +118,7 @@ end)
 
 -- Opening Menu
 RegisterCommand(Config.hudCommand, function()
-	if not isOpen then
+	if not isOpen and not isPaused then
 		isOpen = true
 		SendNUIMessage({ action = 'show' })
 		SetNuiFocus(true, true)

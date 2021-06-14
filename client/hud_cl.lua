@@ -109,7 +109,7 @@ RegisterNUICallback('close', function()
 end)
 
 -- Opening Menu
-RegisterCommand('hud', function()
+RegisterCommand(Config.hudCommand, function()
 	if not isOpen then
 		isOpen = true
 		SendNUIMessage({ action = 'show' })

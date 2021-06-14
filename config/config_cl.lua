@@ -10,6 +10,8 @@ Config.waitSpawn    = 5000 -- Time to set elements back to saved on spawn
 Config.waitResource = 2000 -- Time to set elements back to saved after resource start
 
 -- Variables (Controls)
+Config.hudCommand   = 'hud' -- Open hud menu
+
 Config.voiceCommand = 'levelVoice' -- Voice cycle command name
 Config.voiceKey     = 'z' -- Cycles through modes (has to match your voip script key)
 Config.voiceDesc    = 'Adjust the voice range' -- Keybind description

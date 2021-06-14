@@ -1,34 +1,18 @@
-/*$(document).ready(function() {
-  if (Config.useESX) {
-    document.getElementById("hunger").style.display = "";
-    document.getElementById("thirst").style.display = "";
-    document.getElementById("hunger-thirst").style.display = "";
-    document.getElementById("hunger-option").style.display = "";
-    document.getElementById("thirst-option").style.display = "";
+window.addEventListener('load', () => {
+  if (Config.useESX && !Config.useStress) {
     document.getElementById("stress").style.display = "none";
-    document.getElementById("stress-show").style.display = "none";
-    document.getElementById("stress-button").style.display = "none";
-    document.getElementById("stress-option").style.display = "none";
-    if (Config.useStress) {
-      document.getElementById("stress").style.display = "";
-      document.getElementById("stress-show").style.display = "";
-      document.getElementById("stress-button").style.display = "";
-      document.getElementById("stress-option").style.display = "";
-    };
+    document.getElementById("slider-stress").style.display = "none";
+  } else if (Config.useESX && Config.useStress) {
+    return
   } else {
     document.getElementById("hunger").style.display = "none";
     document.getElementById("thirst").style.display = "none";
     document.getElementById("stress").style.display = "none";
-    document.getElementById("hunger-thirst").style.display = "none";
-    document.getElementById("stress-show").style.display = "none";
-    document.getElementById("stress-button").style.display = "none";
-    document.getElementById("hunger-option").style.display = "none";
-    document.getElementById("thirst-option").style.display = "none";
-    document.getElementById("stress-option").style.display = "none";
+    document.getElementById("slider-hunger").style.display = "none";
+    document.getElementById("slider-thirst").style.display = "none";
+    document.getElementById("slider-stress").style.display = "none";
   };
-});*/
-
-const colorPicker = document.querySelector('.colorpicker')
+});
 
 // Load draggable
 window.addEventListener('load', () => {
@@ -46,21 +30,6 @@ window.addEventListener('load', () => {
     };
   };
 
-
-  $("#health").animate({ top: localStorage.getItem("dragHealthTop"), left: localStorage.getItem("dragHealthLeft") });
-  $("#armor").animate({ top: localStorage.getItem("dragArmorTop"), left: localStorage.getItem("dragArmorLeft") });
-  $("#stamina").animate({ top: localStorage.getItem("dragStaminaTop"), left: localStorage.getItem("dragStaminaLeft") });
-  $("#oxygen").animate({ top: localStorage.getItem("dragOxygenTop"), left: localStorage.getItem("dragOxygenLeft") });
-  $("#microphone").animate({ top: localStorage.getItem("dragMicTop"), left: localStorage.getItem("dragMicLeft") });
-  $("#id").animate({ top: localStorage.getItem("dragIdTop"), left: localStorage.getItem("dragIdLeft") });
-  if (Config.useESX) {
-    $("#hunger").animate({ top: localStorage.getItem("dragHungerTop"), left: localStorage.getItem("dragHungerLeft") });
-    $("#thirst").animate({ top: localStorage.getItem("dragThirstTop"), left: localStorage.getItem("dragThirstLeft") });
-    if (Config.useStress) {
-      $("#stress").animate({ top: localStorage.getItem("dragStressTop"), left: localStorage.getItem("dragStressLeft") });
-    };
-  };
-
   startColorpicker();
 });
 
@@ -71,7 +40,6 @@ window.addEventListener("message", function(event) {
       startColorpicker();
       startColors();
       startPositions();
-
     break;
 
     // Send Data
@@ -98,6 +66,7 @@ window.addEventListener("message", function(event) {
   }
 });
 
+// Initialization
 const startColors = () => {
   $('#health-circle').css('stroke', localStorage.getItem("healthColor"));
   $('#armor-circle').css('stroke', localStorage.getItem("armorColor"));
@@ -187,7 +156,6 @@ let updateColorPicker = (event) => {
   let color = event.target.value
   switch ($("#selection").val()) {
     case "health-option":
-
       $('#health-circle').css('stroke', color);
       localStorage.setItem("healthColor", color);
     break;

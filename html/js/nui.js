@@ -1,6 +1,10 @@
 const phone = document.getElementById('phone')
 const alertNoti = document.querySelector('.alert')
 const soundNoti = document.getElementById('audio')
+const colorPicker = document.querySelector('.colorpicker')
+
+let dragHealthTop, dragHealthLeft, dragArmorTop, dragArmorLeft, dragStaminaTop, dragStaminaLeft, dragOxygenTop, dragOxygenLeft, dragMicTop, dragMicLeft, dragIdTop, dragIdLeft, dragHungerTop, dragHungerLeft, dragThirstTop, dragThirstLeft, dragStressTop, dragStressLeft;
+dragHealthTop = dragHealthLeft = dragArmorTop = dragArmorLeft = dragStaminaTop = dragStaminaLeft = dragOxygenTop = dragOxygenLeft = dragMicTop = dragMicLeft = dragIdTop = dragIdLeft = dragHungerTop = dragHungerLeft = dragThirstTop = dragThirstLeft = dragStressTop = dragStressLeft = 0;
 
 // Dark mode
 document.querySelector('.invert-btn').addEventListener('click', () => {
@@ -110,7 +114,6 @@ document.getElementById('reset-color').addEventListener('click', () => {
         alertNoti.style.animation = "none";
         $(".accept-button").fadeIn();
         $(".reset-buttons").fadeIn();
-
         $('#health-circle').css('stroke', '');
         localStorage.setItem("healthColor", '');
         $('#armor-circle').css('stroke', '');
@@ -132,7 +135,8 @@ document.getElementById('reset-color').addEventListener('click', () => {
               $('#stress-circle').css('stroke', '');
               localStorage.setItem("stressColor", '');
             };
-          };
+        };
+        colorPicker.value = rgb2hex($('#health-circle').css('stroke'))
     }, 3600)
 });
 

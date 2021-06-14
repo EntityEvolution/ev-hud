@@ -1,5 +1,5 @@
 -- Variables
-local isOpen
+local isOpen, isPaused
 local whisper, normal, shout = 33, 66, 100
 local microphone = Config.voiceDefault
 
@@ -89,14 +89,22 @@ CreateThread(function()
 				time = hours .. ":" .. minutes
 			})
 		end
+
+		if IsPauseMenuActive() and not isPaused then
+			isPaused = true
+			SendNUIMessage({action = "isPaused"})
+		elseif not IsPauseMenuActive and isPaused then
+			isPaused = false
+			SendNUIMessage({action = "notPaused"})
+		end
 		Wait(Config.waitTime)
 	end
 end)
 
 CreateThread(function()
     while isOpen do
-        Wait(500)
         DisableControlAction(0, 322, true)
+		Wait(500)
     end
 end)
 

@@ -1,7 +1,7 @@
 -- Variables
 local isOpen
 local whisper, normal, shout = 33, 66, 100
-local microphone = Config.voiceDefault -- Change this for default (whisper, normal, shout)
+local microphone = Config.voiceDefault
 
 -- ESX Initialization
 if Config.useESX then

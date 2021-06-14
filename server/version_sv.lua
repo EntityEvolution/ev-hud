@@ -15,7 +15,6 @@ AddEventHandler('onResourceStart', function(resourceName)
             end
         end
 
-	
 		PerformHttpRequest("https://raw.githubusercontent.com/EntityEvolution/ev-hud/main/version", checkVersion, "GET")
 	end
 end)

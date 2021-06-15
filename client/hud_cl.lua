@@ -157,12 +157,6 @@ end)
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() == resourceName) then
-		if Config.useESX then
-			SendNUIMessage({ action = 'startESX' })
-			if Config.useStress then
-				SendNUIMessage({ action = 'startStress' })
-			end
-		end
 		Wait(Config.waitResource)
 		SendNUIMessage({ action = 'startUp' })
 		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})		

@@ -19,5 +19,5 @@ Config.voiceDesc    = 'Adjust the voice range' -- Keybind description
 Config.voiceDefault = 66 -- Whisper: 33, Normal: 66, Shout: 100,
 
 -- Variables (Framework)
-Config.useESX       = false -- Change ESX config to true to use ESX (change ./html/js/config.js Config.useESX to true too)
+Config.useESX       = true -- Change ESX config to true to use ESX (change ./html/js/config.js Config.useESX to true too)
 Config.useStress    = false -- Use ESX stress by Utku (https://github.com/utkuali/Stress-System-by-utku)

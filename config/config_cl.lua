@@ -11,7 +11,11 @@ Config.waitResource = 2000 -- Time to set elements back to saved after resource 
 
 -- Variables (Controls)
 Config.hudCommand   = 'hud' -- Open hud menu
-Config.hudDesc      = 'Open the hud panel'
+Config.hudDesc      = 'Open the hud panel' -- Description for opening 
+
+Config.useKeys      = false -- Use keymapping for opening hud panel
+Config.hudKey       = 'f7' -- If useKeys true, it will use this key for opening hud panel
+
 
 Config.voiceCommand = 'levelVoice' -- Voice cycle command name
 Config.voiceKey     = 'z' -- Cycles through modes (has to match your voip script key)

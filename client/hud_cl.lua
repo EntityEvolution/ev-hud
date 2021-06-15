@@ -148,6 +148,9 @@ RegisterCommand(Config.voiceCommand, function()
 end)
 
 RegisterKeyMapping(Config.voiceCommand, Config.voiceDesc, 'keyboard', Config.voiceKey)
+if Config.useKeys then
+	RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
+end
 
 -- Handlers
 AddEventHandler('playerSpawned', function()

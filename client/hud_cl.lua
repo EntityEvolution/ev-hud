@@ -14,6 +14,13 @@ if Config.useESX then
     end)
 end
 
+-- vRP Initialization
+if Config.usevRP then
+	local Tunnel = module("vrp","lib/Tunnel")
+	local Proxy = module("vrp","lib/Proxy")
+	vRP = Proxy.getInterface("vRP")
+end
+
 if Config.useESX then
 	AddEventHandler("esx_status:onTick", function(status)
 		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
@@ -74,6 +81,19 @@ CreateThread(function()
 				stress = stress,
 				oxygen = oxygen,
 				id = id,
+				players = players,
+				time = hours .. ":" .. minutes
+			})
+		elseif Config.usevRP then
+			SendNUIMessage({
+				action = "hud",
+				health = vRP.getHealth(),
+				armor = vRP.getArmour(),
+				stamina = stamina,
+				hunger = vRP.getHunger(),
+				thirst = vRP.getThirst(),
+				oxygen = oxygen,
+				id = vRP.getUserId(),
 				players = players,
 				time = hours .. ":" .. minutes
 			})

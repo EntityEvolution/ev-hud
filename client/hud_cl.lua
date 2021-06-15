@@ -103,6 +103,8 @@ CreateThread(function()
 				health = vRP.getHealth(),
 				armor = vRP.getArmour(),
 				stamina = stamina,
+				hunger = vRP.getHunger(),
+				thirst = vRP.getThirst(),
 				oxygen = oxygen,
 				id = vRP.getUserId(),
 				players = players,

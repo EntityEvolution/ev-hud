@@ -84,20 +84,7 @@ CreateThread(function()
 				players = players,
 				time = hours .. ":" .. minutes
 			})
-		else
-			SendNUIMessage({
-				action = "hud",
-				health = health,
-				armor = armor,
-				stamina = stamina,
-				oxygen = oxygen,
-				id = id,
-				players = players,
-				time = hours .. ":" .. minutes
-			})
-		end
-
-		if Config.usevRP then
+		elseif Config.usevRP then
 			SendNUIMessage({
 				action = "hud",
 				health = vRP.getHealth(),
@@ -107,6 +94,17 @@ CreateThread(function()
 				thirst = vRP.getThirst(),
 				oxygen = oxygen,
 				id = vRP.getUserId(),
+				players = players,
+				time = hours .. ":" .. minutes
+			})
+		else
+			SendNUIMessage({
+				action = "hud",
+				health = health,
+				armor = armor,
+				stamina = stamina,
+				oxygen = oxygen,
+				id = id,
 				players = players,
 				time = hours .. ":" .. minutes
 			})

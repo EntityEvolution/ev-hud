@@ -12,7 +12,7 @@ This project does not contain a license, therefore you are not allowed to add on
  - Cinematic bars, id, and status
  - Visual microphone
  - Config for ESX and [Stress](https://github.com/utkuali/Stress-System-by-utku) `(config.lua and config.js)`
- - Config for VRP (by Synter) `(config.lua and config.js)`
+ - Config for VRP (by Synter) `(config.lua, config.js and fxmanifest)`
 
 ## Screenshot
 ![Image](https://imgur.com/zcf5Ewd.png)

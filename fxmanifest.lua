@@ -21,6 +21,7 @@ files {
 	'html/ui.html',
 	'html/css/*.css',
 	'html/fonts/*.ttf',
+	'config/config.js',
 	'html/js/*.js',
 	'html/img/noti.wav',
 	'html/img/*.png',

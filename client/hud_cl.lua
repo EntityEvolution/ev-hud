@@ -155,6 +155,9 @@ end
 -- Handlers
 AddEventHandler('playerSpawned', function()
 	Wait(Config.waitSpawn)
+	if Config.activateMap then
+		DisplayRadar(false)
+	end
 	SendNUIMessage({ action = 'startUp' })
 end)
 

@@ -93,7 +93,7 @@ CreateThread(function()
 		if IsPauseMenuActive() and not isPaused then
 			isPaused = true
 			SendNUIMessage({action = "isPaused"})
-		elseif not IsPauseMenuActive and isPaused then
+		elseif not IsPauseMenuActive() and isPaused then
 			isPaused = false
 			SendNUIMessage({action = "notPaused"})
 		end

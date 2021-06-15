@@ -57,10 +57,10 @@ window.addEventListener('load', () => {
 window.addEventListener("message", function(event) {
   switch (event.data.action) {
     case "startUp":
-      startColorpicker();
+      startSliders();
       startColors();
       startPositions();
-      startSliders();
+      startColorpicker();
     break;
 
     // Send Data
@@ -99,62 +99,62 @@ window.addEventListener("message", function(event) {
     break;
 
     case "notPaused":
-      if (JSON.parse(localStorage.getItem("sliderHealth"))) {
+      if (health) {
         document.getElementById("health").style.display = "";
       } else {
         document.getElementById("health").style.display = "none"
       }
 
-      if (JSON.parse(localStorage.getItem("sliderArmor"))) {
+      if (armor) {
         document.getElementById("armor").style.display = "";
       } else {
         document.getElementById("armor").style.display = "none"
       }
 
-      if (JSON.parse(localStorage.getItem("sliderStamina"))) {
+      if (stamina) {
         document.getElementById("stamina").style.display = "";
       } else {
         document.getElementById("stamina").style.display = "none"
       }
 
-      if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
+      if (oxygen) {
         document.getElementById("oxygen").style.display = "";
       } else {
         document.getElementById("oxygen").style.display = "none"
       }
-  
-      if (JSON.parse(localStorage.getItem("sliderMic"))) {
-        document.getElementById("microphone").style.display = "";
-      } else {
-        document.getElementById("microphone").style.display = "none"
-      }
 
-      if (JSON.parse(localStorage.getItem("sliderId"))) {
+      if (id) {
         document.getElementById("id").style.display = "";
       } else {
         document.getElementById("id").style.display = "none"
       }
 
-      if (JSON.parse(localStorage.getItem("sliderCinematic"))) {
+      if (mic) {
+        document.getElementById("microphone").style.display = "";
+      } else {
+        document.getElementById("microphone").style.display = "none"
+      }
+
+      if (cinematic) {
         document.getElementById("cinematic").style.display = "block";
       } else {
         document.getElementById("cinematic").style.display = "none"
       }
 
       if (useESX) {
-        if (JSON.parse(localStorage.getItem("sliderHunger"))) {
+        if (hunger) {
           document.getElementById("hunger").style.display = "";
         } else {
           document.getElementById("hunger").style.display = "none"
         }
-        
-        if (JSON.parse(localStorage.getItem("sliderThirst"))) {
+  
+        if (thirst) {
           document.getElementById("thirst").style.display = "";
         } else {
           document.getElementById("thirst").style.display = "none"
         }
         if (useStress) {
-          if (JSON.parse(localStorage.getItem("sliderStress"))) {
+          if (stress) {
             document.getElementById("stress").style.display = "";
           } else {
             document.getElementById("stress").style.display = "none"
@@ -494,8 +494,77 @@ window.addEventListener('load', () => {
     cinematic = checkCinematic.checked
     if (cinematic) {
       document.getElementById("cinematic").style.display = "block";
+      document.getElementById("health").style.display = "none"
+      document.getElementById("armor").style.display = "none"
+      document.getElementById("stamina").style.display = "none"
+      document.getElementById("oxygen").style.display = "none"
+      document.getElementById("id").style.display = "none"
+      document.getElementById("microphone").style.display = "none"
+      if (useESX) {
+        document.getElementById("hunger").style.display = "none"
+        document.getElementById("thirst").style.display = "none"
+        if (useStress) {
+          document.getElementById("stress").style.display = "none"
+        }
+      }
     } else {
       document.getElementById("cinematic").style.display = "none"
+      if (health) {
+        document.getElementById("health").style.display = "";
+      } else {
+        document.getElementById("health").style.display = "none"
+      }
+
+      if (armor) {
+        document.getElementById("armor").style.display = "";
+      } else {
+        document.getElementById("armor").style.display = "none"
+      }
+
+      if (stamina) {
+        document.getElementById("stamina").style.display = "";
+      } else {
+        document.getElementById("stamina").style.display = "none"
+      }
+
+      if (oxygen) {
+        document.getElementById("oxygen").style.display = "";
+      } else {
+        document.getElementById("oxygen").style.display = "none"
+      }
+
+      if (id) {
+        document.getElementById("id").style.display = "";
+      } else {
+        document.getElementById("id").style.display = "none"
+      }
+
+      if (mic) {
+        document.getElementById("microphone").style.display = "";
+      } else {
+        document.getElementById("microphone").style.display = "none"
+      }
+
+      if (useESX) {
+        if (hunger) {
+          document.getElementById("hunger").style.display = "";
+        } else {
+          document.getElementById("hunger").style.display = "none"
+        }
+  
+        if (thirst) {
+          document.getElementById("thirst").style.display = "";
+        } else {
+          document.getElementById("thirst").style.display = "none"
+        }
+        if (useStress) {
+          if (stress) {
+            document.getElementById("stress").style.display = "";
+          } else {
+            document.getElementById("stress").style.display = "none"
+          }
+        };
+      };
     }
   })
 
@@ -539,6 +608,7 @@ window.addEventListener('load', () => {
   };
 })
 
+// Circumference
 let progressCircle = (percent, element) => {
   const circle = document.querySelector(element);
   const radius = circle.r.baseVal.value;

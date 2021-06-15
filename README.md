@@ -1,4 +1,4 @@
-## pe-hud
+## ev-hud
 A simple HUD with multiple customization options.
 
 # License

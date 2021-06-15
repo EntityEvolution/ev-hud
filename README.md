@@ -12,10 +12,11 @@ This project does not contain a license, therefore you are not allowed to add on
  - Cinematic bars, id, and status
  - Visual microphone
  - Config for ESX and [Stress](https://github.com/utkuali/Stress-System-by-utku) `(config.lua and config.js)`
+ - Config for VRP (by Synter) `(config.lua and config.js)`
 
 ## Screenshot
 ![Image](https://imgur.com/zcf5Ewd.png)
 
 ### Acknowledgement
-[Progress Circle](https://github.com/nafing/esx_nafing_hud/blob/master/html/main.js#L59)
-[Regex](https://stackoverflow.com/a/3627747)
+- [Progress Circle](https://github.com/nafing/esx_nafing_hud/blob/master/html/main.js#L59)
+- [Regex](https://stackoverflow.com/a/3627747)

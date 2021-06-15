@@ -162,6 +162,6 @@ AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() == resourceName) then
 		Wait(Config.waitResource)
 		SendNUIMessage({ action = 'startUp' })
-		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})		
+		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 	end
 end)

@@ -9,6 +9,7 @@ description 'Standalone hud created by a Entity Evolution'
 lua54 'yes'
 
 client_scripts {
+	--'@vrp/lib/utils.lua', --uncomment this if you use vRP
 	'config/config_cl.lua',
 	'client/hud_cl.lua'
 }

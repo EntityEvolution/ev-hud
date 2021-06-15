@@ -572,7 +572,7 @@ window.addEventListener('load', () => {
   if (Config.useESX) {
     checkHunger.addEventListener("click", () => {
       hunger = checkHunger.checked
-      if (health) {
+      if (hunger) {
         document.getElementById("hunger").style.display = "";
       } else {
         document.getElementById("hunger").style.display = "none"

@@ -4,6 +4,10 @@
   src: url('../fonts/KumbhSans-Regular.ttf');
 }
 
+body {
+  overflow: hidden;
+}
+
 :root {
   --scrollbar: #8f8f8f;
   --hover: #494949;
@@ -124,21 +128,20 @@
 .panel-menu-wrapper {
   position: absolute;
   bottom: 3%;
-  left: -50%;
+  right: -50%;
   height: 80%;
-  width: 100%;
+  width: 22%;
 }
 
 .image-container {
   display: flex;
   justify-content: center;
-  width: 20%;
   margin-left: 1%;
-  left: 0%;
+  right: 0%;
 }
 
 @keyframes slide {
-  100% { left: 0; }
+  100% { right: 0; }
 }
 
 .image-panel {
@@ -217,7 +220,7 @@
 .image-exit {
   position: absolute;
   font-size: 2.0vh;
-  width: 10%;
+  width: 50%;
   bottom: 4.5%;
   border-bottom: 0.8vh solid var(--scrollbar);
   border-radius: 6px;

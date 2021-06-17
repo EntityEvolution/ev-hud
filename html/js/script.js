@@ -34,6 +34,8 @@ window.addEventListener('load', () => {
     document.getElementById("thirst-option").style.display = "none";
     document.getElementById("stress-option").style.display = "none";
   };
+  $("#phone").show();
+  phone.style.animation = "slide 1.5s forwards";
 });
 
 // Load draggable

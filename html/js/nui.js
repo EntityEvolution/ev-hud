@@ -1,7 +1,7 @@
-const phone = document.getElementById('phone')
-const alertNoti = document.querySelector('.alert')
-const soundNoti = document.getElementById('audio')
-const colorPicker = document.querySelector('.colorpicker')
+const phone = doc.getElementById('phone')
+const alertNoti = doc.querySelector('.alert')
+const soundNoti = doc.getElementById('audio')
+const colorPicker = doc.querySelector('.colorpicker')
 
 let dragHealthTop, dragHealthLeft, dragArmorTop, dragArmorLeft, dragStaminaTop, dragStaminaLeft, dragOxygenTop, dragOxygenLeft, dragMicTop, dragMicLeft, dragIdTop, dragIdLeft, dragHungerTop, dragHungerLeft, dragThirstTop, dragThirstLeft, dragStressTop, dragStressLeft;
 dragHealthTop = dragHealthLeft = dragArmorTop = dragArmorLeft = dragStaminaTop = dragStaminaLeft = dragOxygenTop = dragOxygenLeft = dragMicTop = dragMicLeft = dragIdTop = dragIdLeft = dragHungerTop = dragHungerLeft = dragThirstTop = dragThirstLeft = dragStressTop = dragStressLeft = 0;
@@ -79,7 +79,7 @@ document.querySelector('.accept-button').addEventListener('click', () => {
         localStorage.setItem("dragMicTop", dragMicTop);
         localStorage.setItem("dragMicLeft", dragMicLeft);
 
-        if (Config.useESX) {
+        if (Config.useFramework) {
             localStorage.setItem("dragHungerTop", dragHungerTop);
             localStorage.setItem("dragHungerLeft", dragHungerLeft);
             
@@ -96,10 +96,10 @@ document.querySelector('.accept-button').addEventListener('click', () => {
         localStorage.setItem("sliderArmor", armor)
         localStorage.setItem("sliderStamina", stamina)
         localStorage.setItem("sliderOxygen", oxygen)
-        localStorage.setItem("sliderMic", mic)
+        localStorage.setItem("sliderMic", microphone)
         localStorage.setItem("sliderId", id)
         localStorage.setItem("sliderCinematic", cinematic)
-        if (Config.useESX) {
+        if (Config.useFramework) {
             localStorage.setItem("sliderHunger", hunger)
             localStorage.setItem("sliderThirst", thirst)
             if (Config.useStress) {
@@ -140,7 +140,7 @@ document.getElementById('reset-color').addEventListener('click', () => {
         localStorage.setItem("microphoneColor", '');
         $('#id-circle').css('stroke', '');
         localStorage.setItem("idColor", '');
-        if (Config.useESX) {
+        if (Config.useFramework) {
             $('#hunger-circle').css('stroke', '');
             localStorage.setItem("hungerColor", '');
             $('#thirst-circle').css('stroke', '');
@@ -191,7 +191,7 @@ document.getElementById('reset-position').addEventListener('click', () => {
         $("#id").animate({ top: "0px", left: "0px" });
         localStorage.setItem("dragIdTop", "0px");
         localStorage.setItem("dragIdLeft", "0px");
-        if (Config.useESX) {
+        if (Config.useFramework) {
             $("#hunger").animate({top: "0px", left: "0px"});
             localStorage.setItem("dragHungerTop", "0px");
             localStorage.setItem("dragHungerLeft", "0px");
@@ -238,7 +238,7 @@ $("#microphone").on("dragstop", function(event, ui) {
     dragMicLeft = ui.position.left;
 });
 
-if (Config.useESX) {
+if (Config.useFramework) {
     $("#hunger").on("dragstop", function(event, ui) {
         dragHungerTop = ui.position.top;
         dragHungerLeft = ui.position.left;
@@ -255,3 +255,18 @@ if (Config.useESX) {
         });
     };
 };
+
+const startPhone = ()=> {
+    doc.getElementById('phone')
+    phone.style.animation = "slide 1.5s forwards";
+}
+
+// Short localstorage
+function saveId(item, check) {
+  localStorage.setItem(item, check);
+}
+
+function getId(item) {
+  let storage = JSON.parse(localStorage.getItem(item));
+  return storage
+}

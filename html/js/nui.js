@@ -15,8 +15,7 @@ document.querySelector('.invert-btn').addEventListener('click', () => {
 window.addEventListener("message", function(event) {
     switch (event.data.action) {
         case "show":
-            $("#phone").show();
-            phone.style.animation = "slide 1.5s forwards";
+            startPhone();
         break;
     }
 })
@@ -60,52 +59,7 @@ document.querySelector('.accept-button').addEventListener('click', () => {
         $(".accept-button").fadeIn();
         $(".reset-buttons").fadeIn();
         
-        // Save all position data
-        localStorage.setItem("dragHealthTop", dragHealthTop);
-        localStorage.setItem("dragHealthLeft", dragHealthLeft);
-
-        localStorage.setItem("dragArmorTop", dragArmorTop);
-        localStorage.setItem("dragArmorLeft", dragArmorLeft);
-
-        localStorage.setItem("dragStaminaTop", dragStaminaTop);
-        localStorage.setItem("dragStaminaLeft", dragStaminaLeft);
-
-        localStorage.setItem("dragOxygenTop", dragOxygenTop);
-        localStorage.setItem("dragOxygenLeft", dragOxygenLeft);
-
-        localStorage.setItem("dragIdTop", dragIdTop);
-        localStorage.setItem("dragIdLeft", dragIdLeft);
-
-        localStorage.setItem("dragMicTop", dragMicTop);
-        localStorage.setItem("dragMicLeft", dragMicLeft);
-
-        if (Config.useFramework) {
-            localStorage.setItem("dragHungerTop", dragHungerTop);
-            localStorage.setItem("dragHungerLeft", dragHungerLeft);
-            
-            localStorage.setItem("dragThirstTop", dragThirstTop);
-            localStorage.setItem("dragThirstLeft", dragThirstLeft);
-            if (Config.useStress) {
-                localStorage.setItem("dragStressTop", dragTop);
-                localStorage.setItem("dragStressLeft", dragLeft);
-            };
-        };
-
-        // Save sliders data
-        localStorage.setItem("sliderHealth", health)
-        localStorage.setItem("sliderArmor", armor)
-        localStorage.setItem("sliderStamina", stamina)
-        localStorage.setItem("sliderOxygen", oxygen)
-        localStorage.setItem("sliderMic", microphone)
-        localStorage.setItem("sliderId", id)
-        localStorage.setItem("sliderCinematic", cinematic)
-        if (Config.useFramework) {
-            localStorage.setItem("sliderHunger", hunger)
-            localStorage.setItem("sliderThirst", thirst)
-            if (Config.useStress) {
-                localStorage.setItem("sliderStress", stress)
-            };
-        };
+        saveData();
     }, 5600)
 });
 
@@ -259,6 +213,54 @@ if (Config.useFramework) {
 const startPhone = ()=> {
     doc.getElementById('phone')
     phone.style.animation = "slide 1.5s forwards";
+}
+
+const saveData = ()=> {
+    localStorage.setItem("dragHealthTop", dragHealthTop);
+    localStorage.setItem("dragHealthLeft", dragHealthLeft);
+
+    localStorage.setItem("dragArmorTop", dragArmorTop);
+    localStorage.setItem("dragArmorLeft", dragArmorLeft);
+
+    localStorage.setItem("dragStaminaTop", dragStaminaTop);
+    localStorage.setItem("dragStaminaLeft", dragStaminaLeft);
+
+    localStorage.setItem("dragOxygenTop", dragOxygenTop);
+    localStorage.setItem("dragOxygenLeft", dragOxygenLeft);
+
+    localStorage.setItem("dragIdTop", dragIdTop);
+    localStorage.setItem("dragIdLeft", dragIdLeft);
+
+    localStorage.setItem("dragMicTop", dragMicTop);
+    localStorage.setItem("dragMicLeft", dragMicLeft);
+
+    if (Config.useFramework) {
+        localStorage.setItem("dragHungerTop", dragHungerTop);
+        localStorage.setItem("dragHungerLeft", dragHungerLeft);
+        
+        localStorage.setItem("dragThirstTop", dragThirstTop);
+        localStorage.setItem("dragThirstLeft", dragThirstLeft);
+        if (Config.useStress) {
+            localStorage.setItem("dragStressTop", dragTop);
+            localStorage.setItem("dragStressLeft", dragLeft);
+        };
+    };
+
+    // Save sliders data
+    localStorage.setItem("sliderHealth", health)
+    localStorage.setItem("sliderArmor", armor)
+    localStorage.setItem("sliderStamina", stamina)
+    localStorage.setItem("sliderOxygen", oxygen)
+    localStorage.setItem("sliderMic", microphone)
+    localStorage.setItem("sliderId", id)
+    localStorage.setItem("sliderCinematic", cinematic)
+    if (Config.useFramework) {
+        localStorage.setItem("sliderHunger", hunger)
+        localStorage.setItem("sliderThirst", thirst)
+        if (Config.useStress) {
+            localStorage.setItem("sliderStress", stress)
+        };
+    };
 }
 
 // Short localstorage

@@ -178,21 +178,21 @@ const setCircles = (boolean)=> {
         }
         if (Config.useFramework) {
             if (hunger) {
-            hungerCircle.style.display = 'inline-block';
+                hungerCircle.style.display = 'inline-block';
             } else {
-            hungerCircle.style.display = 'none'
+                hungerCircle.style.display = 'none'
             }
             if (thirst) {
-            thirstCircle.style.display = 'inline-block';
+                thirstCircle.style.display = 'inline-block';
             } else {
-            thirstCircle.style.display = 'none'
+                thirstCircle.style.display = 'none'
             }
             if (Config.useStress) {
-            if (stress) {
-                stressCircle.style.display = 'inline-block';
-            } else {
-                stressCircle.style.display = 'none'
-            }
+                if (stress) {
+                    stressCircle.style.display = 'inline-block';
+                } else {
+                    stressCircle.style.display = 'none'
+                }
             };
         };
     } else if (boolean == "hide") {

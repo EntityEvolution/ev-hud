@@ -3,6 +3,10 @@ local isOpen, isPaused
 local whisper, normal, shout = 33, 66, 100
 local microphone = Config.voiceDefault
 
+-- Phone vars
+local prop, model = 0, -1038739674
+local dict, anim = 'cellphone@', 'cellphone_text_in'
+
 -- ESX Initialization
 if Config.useESX then
     ESX              = nil
@@ -130,8 +134,9 @@ end)
 -- NUI callbacks
 RegisterNUICallback('close', function()
 	if isOpen then
-		SetNuiFocus(false, false)
 		isOpen = false
+		SetNuiFocus(false, false)
+		stopAnim()
 	end
 end)
 
@@ -141,6 +146,7 @@ RegisterCommand(Config.hudCommand, function()
 		isOpen = true
 		SendNUIMessage({ action = 'show' })
 		SetNuiFocus(true, true)
+		startAnim()
 	end
 end)
 
@@ -188,3 +194,40 @@ AddEventHandler('onResourceStart', function(resourceName)
 		SendNUIMessage({ action = 'startUp' })
 	end
 end)
+
+-- Phone animation
+function startAnim()
+	local ped = PlayerPedId()
+	if IsPedInAnyVehicle(ped, false) then
+		dict = "anim@cellphone@in_car@ps"
+	end
+
+	RequestModel(model)
+	while not HasModelLoaded(model) do
+		Wait(10)
+	end
+	RequestAnimDict(dict)
+	while not HasAnimDictLoaded(dict) do
+		Wait(10)
+	end
+
+	prop = CreateObject(model, 1.0, 1.0, 1.0, 1, 1, 0)
+	local bone = GetPedBoneIndex(ped, 28422)
+	local isUnarmed = GetCurrentPedWeapon(ped, 1)
+	if isUnarmed then
+		SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
+		AttachEntityToEntity(prop, ped, bone, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 0, 0, 2, 1)
+	else
+		AttachEntityToEntity(prop, ped, bone, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 0, 0, 2, 1)
+	end
+	TaskPlayAnim(ped, dict, anim, 3.0, -1, -1, 50, 0, false, false, false)
+end
+
+function stopAnim()
+	if (prop ~= 0) then
+		local ped = PlayerPedId()
+		DeleteEntity(prop)
+		StopAnimTask(ped, dict, anim, 1.0)
+		prop = 0
+	end
+end

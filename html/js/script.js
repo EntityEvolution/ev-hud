@@ -56,7 +56,6 @@ window.addEventListener("message", function(event) {
     break;
 
     case "notPaused":
-
       if (cinematic) {
         cinemaId.style.display = 'block';
       } else {

@@ -124,7 +124,6 @@ end)
 CreateThread(function()
     while isOpen do
         DisableControlAction(0, 322, true)
-		Wait(500)
     end
 end)
 
@@ -179,12 +178,13 @@ AddEventHandler('playerSpawned', function()
 		DisplayRadar(false)
 	end
 	SendNUIMessage({ action = 'startUp' })
+	TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() == resourceName) then
+		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 		Wait(Config.waitResource)
 		SendNUIMessage({ action = 'startUp' })
-		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 	end
 end)

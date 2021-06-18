@@ -56,12 +56,27 @@ body {
 /* Cinematic bars*/
 .top {
   position: absolute;
-  top: 0%;
+  top: 0;
   width: 100%;
   height: 10%;
   background-color: black;
   left: 0%;
   z-index: 3;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes slideBackUp {
+  100% {
+    top: -20%;
+  }
 }
 
 .bottom {
@@ -73,6 +88,22 @@ body {
   left: 0%;
   z-index: 3;
 }
+
+@keyframes slideUp {
+  0% {
+    bottom: -20%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+
+@keyframes slideBackDown {
+  100% {
+    bottom: -20%;
+  }
+}
+
 
 /* Hud */
 .wrapper {
@@ -163,20 +194,27 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  margin-top: 4%;
   position: absolute;
-  width: 13%;
+  width: 50%;
   height: 5%;
   border-radius: 6px;
   background-color: #8a8a8bea;
-  color: white;
-  font-size: 0.7vw;
-  font-family: Kum;
-  top: -1.5%;
+  top: 8%;
   animation: fadeIn 1.5s forwards;
   animation-delay: 0s;
   margin-right: 0.5%;
   z-index: 6;
+  color: white;
+  font-size: 0.7vw;
+  font-family: Kum;
+  text-align: center;
+}
+
+.alert-text {
+  color: white;
+  font-size: 0.7vw;
+  font-family: Kum;
+  text-align: center;
 }
 
 @keyframes fadeIn {
@@ -220,7 +258,7 @@ body {
 .image-exit {
   position: absolute;
   font-size: 2.0vh;
-  width: 50%;
+  width: 40%;
   bottom: 4.5%;
   border-bottom: 0.8vh solid var(--scrollbar);
   border-radius: 6px;

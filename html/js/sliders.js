@@ -23,8 +23,8 @@ const checkHunger = doc.getElementById('check-hunger')
 const checkThirst = doc.getElementById('check-thirst')
 const hungerCircle = doc.getElementById('hunger')
 const thirstCircle = doc.getElementById('thirst')
-const hungerSlider = doc.getElementById('hunger-option')
-const thirstSlider = doc.getElementById('thirst-option')
+const hungerSlider = doc.getElementById('slider-hunger')
+const thirstSlider = doc.getElementById('slider-thirst')
 const hungerOption = doc.getElementById('hunger-option')
 const thirstOption = doc.getElementById('thirst-option')
 
@@ -33,30 +33,10 @@ const stressCircle = doc.getElementById('stress')
 const stressSlider = doc.getElementById('slider-stress')
 const stressOption = doc.getElementById('stress-option')
 
-let health, armor, stamina, oxygen, mic, id, hunger, thirst, stress;
-health = armor = stamina = oxygen = mic = id = hunger = thirst = stress = true;
+let health, armor, stamina, oxygen, microphone, id, hunger, thirst, stress;
+health = armor = stamina = oxygen = microphone = id = hunger = thirst = stress = true;
 
 let cinematic = false;
-
-const frameworkStartUp = ()=> {
-    if (Config.useFramework && !Config.useStress) {
-        stressCircle.style.display = 'none';
-        stressSlider.style.display = 'none';
-        stressOption.style.display = 'none';
-    } else if (Config.useFramework && Config.useStress) {
-        return
-    } else {
-        hungerCircle.style.display = 'none';
-        thirstCircle.style.display = 'none';
-        stressCircle.style.display = 'none';
-        hungerSlider.style.display = 'none';
-        thirstSlider.style.display = 'none';
-        stressSlider.style.display = 'none';
-        hungerOption.style.display = 'none';
-        thirstOption.style.display = 'none';
-        stressOption.style.display = 'none';
-    };
-}
 
 // Sliders saving
 window.addEventListener('load', () => {
@@ -108,9 +88,18 @@ window.addEventListener('load', () => {
     checkCinematic.addEventListener('click', () => {
       cinematic = checkCinematic.checked
       if (cinematic) {
+        doc.getElementById('top').style.animation = 'slideDown 1.0s forwards'
+        doc.getElementById('bottom').style.animation = 'slideUp 1.0s forwards'
+        setTimeout(function() {
+          cinemaId.style.animation = 'none'
+        }, 1100)
         setCircles('hide');
       } else {
-        cinemaId.style.display = 'none';
+        doc.getElementById('top').style.animation = 'slideBackUp 1.0s forwards'
+        doc.getElementById('bottom').style.animation = 'slideBackDown 1.0s forwards'
+        setTimeout(function() {
+          cinemaId.style.animation = 'none'
+        }, 1100)
         setCircles('show');
       }
     })
@@ -182,7 +171,7 @@ const setCircles = (boolean)=> {
         } else {
             idCircle.style.display = 'none'
         }
-        if (mic) {
+        if (microphone) {
             microphoneCircle.style.display = 'inline-block';
         } else {
             microphoneCircle.style.display = 'none'
@@ -207,7 +196,7 @@ const setCircles = (boolean)=> {
             };
         };
     } else if (boolean == "hide") {
-        cinemaId.style.display = "block";
+        cinemaId.style.display = 'block';
         healthCircle.style.display = 'none'
         armorCircle.style.display = 'none'
         staminaCircle.style.display = 'none'
@@ -222,4 +211,24 @@ const setCircles = (boolean)=> {
           }
         }
     }
+}
+
+const frameworkStartUp = ()=> {
+  if (Config.useFramework && !Config.useStress) {
+      stressCircle.style.display = 'none';
+      stressSlider.style.display = 'none';
+      stressOption.style.display = 'none';
+  } else if (Config.useFramework && Config.useStress) {
+      return
+  } else {
+      hungerCircle.style.display = 'none';
+      thirstCircle.style.display = 'none';
+      stressCircle.style.display = 'none';
+      hungerSlider.style.display = 'none';
+      thirstSlider.style.display = 'none';
+      stressSlider.style.display = 'none';
+      hungerOption.style.display = 'none';
+      thirstOption.style.display = 'none';
+      stressOption.style.display = 'none';
+  };
 }

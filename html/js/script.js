@@ -1,40 +1,23 @@
-
-
-
-
-
-
-// Load ESX
-window.addEventListener('load', () => {
-  frameworkStartUp();
-  startPhone();
-});
+const selection = doc.getElementById('selection')
 
 // Load draggable
 window.addEventListener('load', () => {
-  $('#health').draggable();
-  $("#armor").draggable();
-  $("#stamina").draggable();
-  $("#oxygen").draggable();
-  $("#id").draggable();
-  $("#microphone").draggable();
-  if (Config.useFramework) {
-    $('#hunger').draggable();
-    $('#thirst').draggable();
-    if (Config.useStress) {
-      $('#stress').draggable();
-    };
-  };
+  frameworkStartUp();
 });
 
 // Switches & Cases
 window.addEventListener("message", function(event) {
   switch (event.data.action) {
     case "startUp":
-      startSliders();
+      startDraggable();
+      startColorpicker();
       startColors();
       startPositions();
-      startColorpicker();
+      startSliders();
+    break;
+
+    case "show":
+      startPhone();
     break;
 
     // Send Data
@@ -56,85 +39,30 @@ window.addEventListener("message", function(event) {
     break;
 
     case "isPaused":
-      document.getElementById("health").style.display = "none"
-      document.getElementById("armor").style.display = "none"
-      document.getElementById("stamina").style.display = "none"
-      document.getElementById("oxygen").style.display = "none"
-      document.getElementById("id").style.display = "none"
-      document.getElementById("microphone").style.display = "none"
-      document.getElementById("cinematic").style.display = "none"
+      cinemaId.style.display = 'none';
+      healthCircle.style.display = 'none';
+      armorCircle.style.display = 'none';
+      staminaCircle.style.display = 'none';
+      oxygenCircle.style.display = 'none';
+      idCircle.style.display = 'none';
+      microphoneCircle.style.display = 'none';
       if (Config.useFramework) {
-        document.getElementById("hunger").style.display = "none"
-        document.getElementById("thirst").style.display = "none"
+        hungerCircle.style.display = 'none';
+        thirstCircle.style.display = 'none';
         if (Config.useStress) {
-          document.getElementById("stress").style.display = "none"
+          stressCircle.style.display = 'none';
         }
       }
     break;
 
     case "notPaused":
-      if (health) {
-        document.getElementById("health").style.display = "";
-      } else {
-        document.getElementById("health").style.display = "none"
-      }
-
-      if (armor) {
-        document.getElementById("armor").style.display = "";
-      } else {
-        document.getElementById("armor").style.display = "none"
-      }
-
-      if (stamina) {
-        document.getElementById("stamina").style.display = "";
-      } else {
-        document.getElementById("stamina").style.display = "none"
-      }
-
-      if (oxygen) {
-        document.getElementById("oxygen").style.display = "";
-      } else {
-        document.getElementById("oxygen").style.display = "none"
-      }
-
-      if (id) {
-        document.getElementById("id").style.display = "";
-      } else {
-        document.getElementById("id").style.display = "none"
-      }
-
-      if (mic) {
-        document.getElementById("microphone").style.display = "";
-      } else {
-        document.getElementById("microphone").style.display = "none"
-      }
 
       if (cinematic) {
-        document.getElementById("cinematic").style.display = "block";
+        cinemaId.style.display = 'block';
       } else {
-        document.getElementById("cinematic").style.display = "none"
+        setCircles('show');
+        cinemaId.style.display = 'none';
       }
-
-      if (Config.useFramework) {
-        if (hunger) {
-          document.getElementById("hunger").style.display = "";
-        } else {
-          document.getElementById("hunger").style.display = "none"
-        }
-  
-        if (thirst) {
-          document.getElementById("thirst").style.display = "";
-        } else {
-          document.getElementById("thirst").style.display = "none"
-        }
-        if (Config.useStress) {
-          if (stress) {
-            document.getElementById("stress").style.display = "";
-          } else {
-            document.getElementById("stress").style.display = "none"
-          }
-        };
-      };
     break
 
     case "microphone":
@@ -143,182 +71,129 @@ window.addEventListener("message", function(event) {
   }
 });
 
+document.onkeyup = function(event) {
+  if (event.key == 'Escape') {
+      $("#phone").fadeOut();
+      $.post('https://ev-hud/close');
+      setTimeout(function() {
+          phone.style.animation = 'none';
+      }, 400)
+  }
+};
+
 // Initialization
-const startColors = () => {
-  $('#health-circle').css('stroke', localStorage.getItem("healthColor"));
-  $('#armor-circle').css('stroke', localStorage.getItem("armorColor"));
-  $('#stamina-circle').css('stroke', localStorage.getItem("staminaColor"));
-  $('#oxygen-circle').css('stroke', localStorage.getItem("oxygenColor"));
-  $('#id-circle').css('stroke', localStorage.getItem("idColor"));
-  $('#microphone-circle').css('stroke', localStorage.getItem("microphoneColor"));
+const startDraggable = ()=> {
+  $('#health').draggable();
+  $("#armor").draggable();
+  $("#stamina").draggable();
+  $("#oxygen").draggable();
+  $("#id").draggable();
+  $("#microphone").draggable();
   if (Config.useFramework) {
-    $('#hunger-circle').css('stroke', localStorage.getItem("hungerColor"));
-    $('#thirst-circle').css('stroke', localStorage.getItem("thirstColor"));
+    $('#hunger').draggable();
+    $('#thirst').draggable();
     if (Config.useStress) {
-      $("#stress-circle").css('stroke', localStorage.getItem("stressColor"));
+      $('#stress').draggable();
     };
   };
 }
 
-const startPositions = () => {
-  $("#health").animate({ top: localStorage.getItem("dragHealthTop"), left: localStorage.getItem("dragHealthLeft")});
-  $("#armor").animate({ top: localStorage.getItem("dragArmorTop"), left: localStorage.getItem("dragArmorLeft")});
-  $("#stamina").animate({ top: localStorage.getItem("dragStaminaTop"), left: localStorage.getItem("dragStaminaLeft")});
-  $("#oxygen").animate({ top: localStorage.getItem("dragOxygenTop"), left: localStorage.getItem("dragOxygenLeft")});
-  $("#microphone").animate({ top: localStorage.getItem("dragMicTop"), left: localStorage.getItem("dragMicLeft")});
-  $("#id").animate({ top: localStorage.getItem("dragIdTop"), left: localStorage.getItem("dragIdLeft")});
+const startColors = ()=> {
+  $('#health-circle').css('stroke', getStored('healthColor'));
+  $('#armor-circle').css('stroke', getStored('armorColor'));
+  $('#stamina-circle').css('stroke', getStored('staminaColor'));
+  $('#oxygen-circle').css('stroke', getStored('oxygenColor'));
+  $('#id-circle').css('stroke', getStored('idColor'));
+  $('#microphone-circle').css('stroke', getStored('microphoneColor'));
   if (Config.useFramework) {
-    $("#hunger").animate({ top: localStorage.getItem("dragHungerTop"), left: localStorage.getItem("dragHungerLeft")});
-    $("#thirst").animate({ top: localStorage.getItem("dragThirstTop"), left: localStorage.getItem("dragThirstLeft")});
+    $('#hunger-circle').css('stroke', getStored('hungerColor'));
+    $('#thirst-circle').css('stroke', getStored('thirstColor'));
     if (Config.useStress) {
-      $("#stress").animate({ top: localStorage.getItem("dragStressTop"), left: localStorage.getItem("dragStressLeft")});
+      $("#stress-circle").css('stroke', getStored('stressColor'));
     };
   };
 }
 
-const startColorpicker = () => {
+const startPositions = ()=> {
+  $("#health").animate({ top: getStored('dragHealthTop'), left: getStored('dragHealthLeft')});
+  $("#armor").animate({ top: getStored('dragArmorTop'), left: getStored('dragArmorLeft')});
+  $("#stamina").animate({ top: getStored('dragStaminaTop'), left: getStored('dragStaminaLeft')});
+  $("#oxygen").animate({ top: getStored('dragOxygenTop'), left: getStored('dragOxygenLeft')});
+  $("#microphone").animate({ top: getStored('dragMicrophoneTop'), left: getStored('dragMicrophoneLeft')});
+  $("#id").animate({ top: getStored('dragIdTop'), left: getStored('dragIdLeft')});
+  if (Config.useFramework) {
+    $("#hunger").animate({ top: getStored('dragHungerTop'), left: getStored('dragHungerLeft')});
+    $("#thirst").animate({ top: getStored('dragThirstTop'), left: getStored('dragThirstLeft')});
+    if (Config.useStress) {
+      $("#stress").animate({ top: getStored('dragStressTop'), left: getStored('dragStressLeft')});
+    };
+  };
+}
+
+const startColorpicker = ()=> {
   colorPicker.value = rgb2hex($('#health-circle').css('stroke'));
   colorPicker.addEventListener("input", updateColorPicker, false);
   colorPicker.select();
 }
 
-const startSliders = () => {
-  health = JSON.parse(localStorage.getItem("sliderHealth"))
-  armor = JSON.parse(localStorage.getItem("sliderArmor"))
-  stamina = JSON.parse(localStorage.getItem("sliderStamina"))
-  oxygen = JSON.parse(localStorage.getItem("sliderOxygen"))
-  id = JSON.parse(localStorage.getItem("sliderId"))
-  microphone = JSON.parse(localStorage.getItem("sliderMic"))
-  cinematic = JSON.parse(localStorage.getItem("sliderCinematic"))
-
+const startSliders = ()=> {
+  setSliders();
+  setContainer('sliderHealth', 'check-health', 'health');
+  setContainer('sliderArmor', 'check-armor', 'armor');
+  setContainer('sliderStamina', 'check-stamina', 'stamina');
+  setContainer('sliderOxygen', 'check-oxygen', 'oxygen');
+  setContainer('sliderId', 'check-id', 'id');
+  setContainer('sliderMicrophone', 'check-microphone', 'microphone');
   if (Config.useFramework) {
-    hunger = JSON.parse(localStorage.getItem("sliderHunger"))
-    thirst = JSON.parse(localStorage.getItem("sliderThirst"))
+    setContainer('sliderHunger', 'check-hunger', 'hunger');
+    setContainer('sliderThirst', 'check-thirst', 'thirst');
     if (Config.useStress) {
-      stress = JSON.parse(localStorage.getItem("sliderStress"))
-    };
-  }
-  if (JSON.parse(localStorage.getItem("sliderHealth")) == null) {
-    checkHealth.checked = true;
-  } else {
-    checkHealth.checked = JSON.parse(localStorage.getItem("sliderHealth")); 
-    if (JSON.parse(localStorage.getItem("sliderHealth"))) {
-      document.getElementById("health").style.display = "";
-    } else {
-      document.getElementById("health").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderArmor")) == null) {
-    checkArmor.checked = true;
-  } else {
-    checkArmor.checked = JSON.parse(localStorage.getItem("sliderArmor")); 
-    if (JSON.parse(localStorage.getItem("sliderArmor"))) {
-      document.getElementById("armor").style.display = "";
-    } else {
-      document.getElementById("armor").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderStamina")) == null) {
-    checkStamina.checked = true;
-  } else {
-    checkStamina.checked = JSON.parse(localStorage.getItem("sliderStamina")); 
-    if (JSON.parse(localStorage.getItem("sliderStamina"))) {
-      document.getElementById("stamina").style.display = "";
-    } else {
-      document.getElementById("stamina").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderOxygen")) == null) {
-    checkOxygen.checked = true;
-  } else {
-    checkOxygen.checked = JSON.parse(localStorage.getItem("sliderOxygen")); 
-    if (JSON.parse(localStorage.getItem("sliderOxygen"))) {
-      document.getElementById("oxygen").style.display = "";
-    } else {
-      document.getElementById("oxygen").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderMic")) == null) {
-    checkMic.checked = true;
-  } else {
-    checkMic.checked = JSON.parse(localStorage.getItem("sliderMic")); 
-    if (JSON.parse(localStorage.getItem("sliderMic"))) {
-      document.getElementById("microphone").style.display = "";
-    } else {
-      document.getElementById("microphone").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderId")) == null) {
-    checkId.checked = true;
-  } else {
-    checkId.checked = JSON.parse(localStorage.getItem("sliderId")); 
-    if (JSON.parse(localStorage.getItem("sliderId"))) {
-      document.getElementById("id").style.display = "";
-    } else {
-      document.getElementById("id").style.display = "none"
-    }
-  }
-
-  if (JSON.parse(localStorage.getItem("sliderCinematic")) == null) {
-    checkCinematic.checked = false;
-  } else {
-    checkCinematic.checked = JSON.parse(localStorage.getItem("sliderCinematic")); 
-    if (JSON.parse(localStorage.getItem("sliderCinematic"))) {
-      document.getElementById("cinematic").style.display = "block";
-    } else {
-      document.getElementById("cinematic").style.display = "none"
-    }
-  }
-
-  if (Config.useFramework) {
-    if (JSON.parse(localStorage.getItem("sliderHunger")) == null) {
-      checkHunger.checked = true;
-    } else {
-      checkHunger.checked = JSON.parse(localStorage.getItem("sliderHunger")); 
-      if (JSON.parse(localStorage.getItem("sliderHunger"))) {
-        document.getElementById("hunger").style.display = "";
-      } else {
-        document.getElementById("hunger").style.display = "none"
-      }
-    }
-
-    if (JSON.parse(localStorage.getItem("sliderThirst")) == null) {
-      checkThirst.checked = true;
-    } else {
-      checkThirst.checked = JSON.parse(localStorage.getItem("sliderThirst")); 
-      if (JSON.parse(localStorage.getItem("sliderThirst"))) {
-        document.getElementById("thirst").style.display = "";
-      } else {
-        document.getElementById("thirst").style.display = "none"
-      }
-    }
-    if (Config.useStress) {
-      if (JSON.parse(localStorage.getItem("sliderStress")) == null) {
-        checkStress.checked = true;
-      } else {
-        checkStress.checked = JSON.parse(localStorage.getItem("sliderStress")); 
-        if (JSON.parse(localStorage.getItem("sliderStress"))) {
-          document.getElementById("stress").style.display = "";
-        } else {
-          document.getElementById("stress").style.display = "none"
-        }
-      }
+      setContainer('sliderStress', 'check-stress', 'stress');
     };
   };
+}
+
+const setSliders = ()=> {
+  if (null != getId('sliderHealth')) {
+    health = getId('sliderHealth')
+  }
+  if (null != getId('sliderArmor')) {
+    armor = getId('sliderArmor')
+  }
+  if (null != getId('sliderStamina')) {
+    stamina = getId('sliderStamina')
+  }
+  if (null != getId('sliderOxygen')) {
+    oxygen = getId('sliderOxygen')
+  }
+  if (null != getId('sliderId')) {
+    id = getId('sliderId')
+  }
+  if (null != getId('sliderMicrophone')) {
+    microphone = getId('sliderMicrophone')
+  }
+  if (Config.useFramework) {
+    if (null != getId('sliderHunger')) {
+      hunger = getId('sliderHunger')
+    }
+    if (null != getId('sliderThirst')) {
+      thirst = getId('sliderThirst')
+    }
+    if (Config.useStress) {
+      if (null != getId('sliderStress')) {
+        stress = getId('sliderStress')
+      }
+    };
+  }
 }
 
 // https://stackoverflow.com/a/3627747
 const rgb2hex = (rgb) => `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`
 
 // Color picker function
-window.addEventListener('load', () => {
-  $("#selection").on("change", function () {
-    switch ($("#selection").val()) {
+window.addEventListener('load', ()=> {
+  selection.addEventListener('change', ()=> {
+    switch (selection.value) {
       case "health-option":
         colorPicker.value = rgb2hex($('#health-circle').css('stroke'))
       break;
@@ -359,52 +234,52 @@ window.addEventListener('load', () => {
   });
 });
 
-let updateColorPicker = (event) => {
-  let color = event.target.value
-  switch ($("#selection").val()) {
+let updateColorPicker = (event)=> {
+  let color = event.target.value;
+  switch (selection.value) {
     case "health-option":
       $('#health-circle').css('stroke', color);
-      localStorage.setItem("healthColor", color);
+      saveId('healthColor', color);
     break;
 
     case "armor-option":
       $('#armor-circle').css('stroke', color);
-      localStorage.setItem("armorColor", color);
+      saveId('armorColor', color);
     break;
 
     case "stamina-option":
       $('#stamina-circle').css('stroke', color);
-      localStorage.setItem("staminaColor", color);
-    break;
-
-    case "hunger-option":
-      $('#hunger-circle').css('stroke', color);
-      localStorage.setItem("hungerColor", color);
-    break;
-
-    case "thirst-option":
-      $('#thirst-circle').css('stroke', color);
-      localStorage.setItem("thirstColor", color);
-    break;
-
-    case "stress-option":
-      $('#stress-circle').css('stroke', color);
-      localStorage.setItem("stressColor", color);
+      saveId('staminaColor', color);
     break;
 
     case "oxygen-option":
       $('#oxygen-circle').css('stroke', color);
-      localStorage.setItem("oxygenColor", color);
+      saveId('oxygenColor', color);
     break;
 
     case "microphone-option":
       $('#microphone-circle').css('stroke', color);
-      localStorage.setItem("microphoneColor", color);
+      saveId('microphoneColor', color);
     break;
 
     case "id-option":
       $('#id-circle').css('stroke', color);
-      localStorage.setItem("idColor", color);
+      saveId('idColor', color);
+    break;
+
+    case "hunger-option":
+      $('#hunger-circle').css('stroke', color);
+      saveId('hungerColor', color);
+    break;
+
+    case "thirst-option":
+      $('#thirst-circle').css('stroke', color);
+      saveId('thirstColor', color);
+    break;
+
+    case "stress-option":
+      $('#stress-circle').css('stroke', color);
+      saveId('stressColor', color);
     break;
   };
 }
@@ -423,4 +298,19 @@ let progressCircle = (percent, element) => {
   circle.style.strokeDashoffset = -offset;
 
   html.text(Math.round(percent));
+}
+
+// Container
+function setContainer(slider, check, container) {
+  if (getId(slider) == null) {
+    doc.getElementById(check).checked = true;
+    return
+  } else {
+    doc.getElementById(check).checked = getId(slider)
+    if (getId(slider)) {
+      doc.getElementById(container).style.display = 'inline-block';
+    } else {
+      doc.getElementById(container).style.display = 'none';
+    }
+  }
 }

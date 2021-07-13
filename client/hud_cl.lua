@@ -27,16 +27,12 @@ end
 
 if Config.useESX then
 	AddEventHandler("esx_status:onTick", function(status)
-		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
-			hunger = status.val / 10000
-		end)
-		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
-			thirst = status.val / 10000
-		end)
-		if Config.useStress then
-			TriggerEvent('esx_status:getStatus', 'stress', function(status)
-				stress = status.val / 10000
-			end)
+		local hunger, thirst, stress
+		for k, v in pairs(status) do
+			if v.name == 'hunger' then hunger = v.percent
+			elseif v.name == 'thirst' then thirst = v.percent
+			elseif Config.useStress and v.name == 'stress' then stress = v.percent
+			end
 		end
 	end)
 end

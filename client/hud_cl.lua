@@ -210,7 +210,6 @@ if not Config.usePMAvoice then
 	end
 else
 	function currentVoiceMode(value)
-		print(value)
 		if (value == 1) then
 			SendNUIMessage({
 				action = 'voiceMode',

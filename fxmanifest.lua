@@ -16,7 +16,7 @@ client_scripts {
 	'client/hud_cl.lua'
 }
 
-server_script 'server/version_sv.lua'
+server_scripts 'server/*.lua'
 
 ui_page 'html/ui.html'
 

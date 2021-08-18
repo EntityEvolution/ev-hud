@@ -97,6 +97,35 @@ CreateThread(function()
 				players = players,
 				time = hours .. ":" .. minutes
 			})
+		elseif Config.useQBCore and not Config.useStress then
+			local Player = QBCore.Functions.GetPlayerData()
+			SendNUIMessage({
+				action = "hud",
+				health = health,
+				armor = Player.metadata['armor'],
+				stamina = stamina,
+				hunger = Player.metadata['hunger'],
+				thirst = Player.metadata['thirst'],
+				oxygen = oxygen,
+				id = Player.cid,
+				players = players,
+				time = hours .. ":" .. minutes
+			})
+		elseif Config.useQBCore and Config.useStress then
+			local Player = QBCore.Functions.GetPlayerData()
+			SendNUIMessage({
+				action = "hud",
+				health = health,
+				armor = Player.metadata['armor'],
+				stamina = stamina,
+				hunger = Player.metadata['hunger'],
+				thirst = Player.metadata['thirst'],
+				stress = Player.metadata['stress'],
+				oxygen = oxygen,
+				id = Player.cid,
+				players = players,
+				time = hours .. ":" .. minutes
+			})
 		else
 			SendNUIMessage({
 				action = "hud",

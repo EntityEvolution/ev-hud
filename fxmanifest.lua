@@ -12,14 +12,11 @@ lua54 'yes'
 
 client_scripts {
 	--'@vrp/lib/utils.lua', -- Uncomment if you're planning on using VRP Framework
-	'config/config.lua',
+	'config/config_cl.lua',
 	'client/hud_cl.lua'
 }
 
-server_scripts {
-	'config/config.lua',
-	'server/*.lua'
-}
+server_script 'server/version_sv.lua'
 
 ui_page 'html/ui.html'
 

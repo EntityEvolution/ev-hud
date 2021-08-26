@@ -25,7 +25,7 @@ This project does not contain a license, therefore you are not allowed to add on
  - Config for QBCore `(config.lua, config.js and fxmanifest)`
 
 ## Screenshot
-![Image](https://imgur.com/zcf5Ewd.png)
+![Image](https://imgur.com/kcnEUhe.png)
 
 ### Acknowledgement
 - [Progress Circle](https://github.com/nafing/esx_nafing_hud/blob/master/html/main.js#L59)

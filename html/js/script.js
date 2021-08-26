@@ -64,7 +64,7 @@ window.addEventListener("message", function(event) {
       }
     break
 
-    case "microphone":
+    case "voiceMode":
       progressCircle(event.data.microphone, ".microphone");
     break;
   }

@@ -181,35 +181,37 @@ RegisterCommand(Config.hudCommand, function()
 	end
 end)
 
+if Config.useKeys then
+	RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
+end
+
 if not Config.usePMAvoice then
 	RegisterCommand(Config.voiceCommand, function()
 		if (microphone == 33) then
 			microphone = normal
 			SendNUIMessage({
-				action = "microphone",
+				action = "voiceMode",
 				microphone = microphone
 			})
 		elseif (microphone == 66) then
 			microphone = shout
 			SendNUIMessage({
-				action = "microphone",
+				action = "voiceMode",
 				microphone = microphone
 			})
 		elseif (microphone == 100) then
 			microphone = whisper
 			SendNUIMessage({
-				action = "microphone",
+				action = "voiceMode",
 				microphone = microphone
 			})
 		end
 	end)
 
 	RegisterKeyMapping(Config.voiceCommand, Config.voiceDesc, 'keyboard', Config.voiceKey)
-	if Config.useKeys then
-		RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
-	end
 else
 	function CurrentVoiceMode(value)
+		print(value)
 		if (value == 1) then
 			SendNUIMessage({
 				action = 'voiceMode',
@@ -227,13 +229,12 @@ else
 			})
 		end
 	end
-	exports('CurrentVoiceMode', value)
 end
 
 -- Handlers
 AddEventHandler('playerSpawned', function()
 	Wait(Config.waitSpawn)
-	if Config.activateMap then
+	if Config.disableMap then
 		DisplayRadar(false)
 	end
 	SendNUIMessage({ action = 'startUp' })

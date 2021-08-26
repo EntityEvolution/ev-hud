@@ -30,3 +30,7 @@ files {
 	'html/img/*.png',
 	'html/img/logos/*.png'
 }
+
+exports {
+	'CurrentVoiceMode'
+}

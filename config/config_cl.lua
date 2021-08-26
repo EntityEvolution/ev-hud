@@ -3,7 +3,7 @@ Config              = {}
 -- Variables (HUD)
 Config.maxPlayers   = 48 -- Keep same as sv_maxclients within your server.cfg.
 Config.oxygenMax    = 10 -- Set to 10 / 4 if using vMenu
-Config.activateMap  = true
+Config.disableMap  = true
 
 -- Wait times
 Config.waitTime     = 400  -- Set to 100 so the hud is more fluid. However, performance will be affected.
@@ -24,7 +24,7 @@ Config.voiceDesc    = 'Adjust the voice range' -- Keybind description
 Config.voiceDefault = 66 -- Whisper: 33, Normal: 66, Shout: 100,
 
 -- Variables (Framework)
-Config.useESX       = true -- Change ESX config to true to use ESX (change ./html/js/config.js Config.useESX to true too)
+Config.useESX       = false -- Change ESX config to true to use ESX (change ./html/js/config.js Config.useESX to true too)
 Config.usevRP       = false -- Change vRP config to true if you use vRP Framework
 Config.useQBCore    = false -- Change QBCore config to true if you use QBCore Framework (also uncomment the fxmanifest part)
 

@@ -8,6 +8,7 @@ local GetEntityHealth = GetEntityHealth
 local isOpen, isPaused
 local whisper, normal, shout = 33, 66, 100
 local microphone = Config.voiceDefault
+local hunger, thirst, stress = 100.0, 100.0, 0.0
 
 -- Phone vars
 local prop, model = 0, -1038739674
@@ -33,7 +34,6 @@ end
 
 if Config.useESX then
 	AddEventHandler("esx_status:onTick", function(status)
-		local hunger, thirst, stress
 		for k, v in pairs(status) do
 			if v.name == 'hunger' then hunger = v.percent
 			elseif v.name == 'thirst' then thirst = v.percent
@@ -167,7 +167,7 @@ RegisterNUICallback('close', function()
 	if isOpen then
 		isOpen = false
 		SetNuiFocus(false, false)
-		stopAnim()
+		StopAnim()
 	end
 end)
 
@@ -177,7 +177,7 @@ RegisterCommand(Config.hudCommand, function()
 		isOpen = true
 		SendNUIMessage({ action = 'show' })
 		SetNuiFocus(true, true)
-		startAnim()
+		StartAnim()
 	end
 end)
 
@@ -209,7 +209,7 @@ if not Config.usePMAvoice then
 		RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
 	end
 else
-	function currentVoiceMode(value)
+	function CurrentVoiceMode(value)
 		if (value == 1) then
 			SendNUIMessage({
 				action = 'voiceMode',
@@ -227,7 +227,7 @@ else
 			})
 		end
 	end
-	exports('currentVoiceMode', value)
+	exports('CurrentVoiceMode', value)
 end
 
 -- Handlers
@@ -249,7 +249,7 @@ AddEventHandler('onResourceStart', function(resourceName)
 end)
 
 -- Phone animation
-function startAnim()
+function StartAnim()
 	local ped = PlayerPedId()
 	if IsPedInAnyVehicle(ped, false) then
 		dict = "anim@cellphone@in_car@ps"
@@ -276,7 +276,7 @@ function startAnim()
 	TaskPlayAnim(ped, dict, anim, 3.0, -1, -1, 50, 0, false, false, false)
 end
 
-function stopAnim()
+function StopAnim()
 	if (prop ~= 0) then
 		local ped = PlayerPedId()
 		DeleteEntity(prop)

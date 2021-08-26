@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.disable": [
+        "undefined-global",
+        "deprecated"
+    ],
+    "Lua.diagnostics.globals": [
+        "vRP"
+    ]
+}

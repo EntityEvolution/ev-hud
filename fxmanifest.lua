@@ -2,7 +2,7 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-version '3.2.1'
+version '3.3.0'
 
 description 'Standalone hud created by a Entity Evolution'
 

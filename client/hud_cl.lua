@@ -34,7 +34,7 @@ end
 
 if Config.useESX then
 	AddEventHandler("esx_status:onTick", function(status)
-		for k, v in pairs(status) do
+		for _, v in pairs(status) do
 			if v.name == 'hunger' then hunger = v.percent
 			elseif v.name == 'thirst' then thirst = v.percent
 			elseif Config.useStress and v.name == 'stress' then stress = v.percent

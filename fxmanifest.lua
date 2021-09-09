@@ -4,7 +4,7 @@ game 'gta5'
 
 version 'Custom ESX Version'
 
-description 'Standalone hud created by a Entity Evolution'
+description 'ESX hud created by a Entity Evolution'
 
 lua54 'yes'
 

@@ -108,11 +108,6 @@ $("#oxygen").on("dragstop", function(event, ui) {
     dragOxygenLeft = ui.position.left;
 });
 
-$("#id").on("dragstop", function(event, ui) {
-    dragIdTop = ui.position.top;
-    dragIdLeft = ui.position.left;
-});
-
 $("#microphone").on("dragstop", function(event, ui) {
     dragMicrophoneTop = ui.position.top;
     dragMicrophoneLeft = ui.position.left;
@@ -150,8 +145,6 @@ const saveData = ()=> {
     saveId('dragStaminaLeft', dragStaminaLeft);
     saveId('dragOxygenTop', dragOxygenTop);
     saveId('dragOxygenLeft', dragOxygenLeft);
-    saveId('dragIdTop', dragIdTop);
-    saveId('dragIdLeft', dragIdLeft);
     saveId('dragMicrophoneTop', dragMicrophoneTop);
     saveId('dragMicrophoneLeft', dragMicrophoneLeft);
     if (Config.useFramework) {
@@ -196,9 +189,6 @@ const resetDrag = ()=> {
     $("#microphone").animate({ top: "0px", left: "0px" });
     saveId('dragMicrophoneTop', '0px');
     saveId('dragMicrophoneLeft', '0px');
-    $("#id").animate({ top: "0px", left: "0px" });
-    saveId('dragIdTop', '0px');
-    saveId('dragIdLeft', '0px');
     if (Config.useFramework) {
         $("#hunger").animate({top: "0px", left: "0px"});
         saveId('dragHungerTop', '0px');
@@ -227,8 +217,6 @@ const resetColors = ()=> {
     saveId('oxygenColor', '');
     $('#microphone-circle').css('stroke', '');
     saveId('microphoneColor', '');
-    $('#id-circle').css('stroke', '');
-    saveId('idColor', '');
     if (Config.useFramework) {
         $('#hunger-circle').css('stroke', '');
         saveId('hungerColor', '');

@@ -7,6 +7,7 @@ const checkStamina = doc.getElementById('check-stamina')
 const checkOxygen = doc.getElementById('check-oxygen')
 const checkMic = doc.getElementById('check-microphone')
 const checkCinematic = doc.getElementById('check-cinematic')
+const checkId = doc.getElementById('check-id')
 
 // Hud ids
 const healthCircle = doc.getElementById('health')
@@ -14,6 +15,7 @@ const armorCircle = doc.getElementById('armor')
 const staminaCircle = doc.getElementById('stamina')
 const oxygenCircle = doc.getElementById('oxygen')
 const microphoneCircle = doc.getElementById('microphone')
+const idCircle = doc.getElementById('id')
 const cinemaId = doc.getElementById('cinematic')
 
 // Framework stuff
@@ -31,8 +33,8 @@ const stressCircle = doc.getElementById('stress')
 const stressSlider = doc.getElementById('slider-stress')
 const stressOption = doc.getElementById('stress-option')
 
-let health, armor, stamina, oxygen, microphone, hunger, thirst, stress;
-health = armor = stamina = oxygen = microphone = hunger = thirst = stress = true;
+let health, armor, stamina, oxygen, microphone, id, hunger, thirst, stress;
+health = armor = stamina = oxygen = microphone = id = hunger = thirst = stress = true;
 
 let cinematic = false;
 
@@ -102,6 +104,15 @@ window.addEventListener('load', () => {
       }
     })
   
+    checkId.addEventListener('click', () => {
+      id = checkId.checked
+      if (id) {
+        idCircle.style.display = 'inline-block';
+      } else {
+        idCircle.style.display = 'none';
+      }
+    })
+  
     if (Config.useFramework) {
       checkHunger.addEventListener('click', () => {
         hunger = checkHunger.checked
@@ -155,6 +166,11 @@ const setCircles = (boolean)=> {
         } else {
             oxygenCircle.style.display = 'none'
         }
+        if (id) {
+            idCircle.style.display = 'inline-block';
+        } else {
+            idCircle.style.display = 'none'
+        }
         if (microphone) {
             microphoneCircle.style.display = 'inline-block';
         } else {
@@ -185,6 +201,7 @@ const setCircles = (boolean)=> {
         armorCircle.style.display = 'none'
         staminaCircle.style.display = 'none'
         oxygenCircle.style.display = 'none'
+        idCircle.style.display = 'none'
         microphoneCircle.style.display = 'none'
         if (Config.useFramework) {
           hungerCircle.style.display = 'none'

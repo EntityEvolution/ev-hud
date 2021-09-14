@@ -26,6 +26,8 @@ window.addEventListener("message", function(event) {
       progressCircle(event.data.armor, ".armor");
       progressCircle(event.data.stamina, ".stamina");
       progressCircle(event.data.oxygen, ".oxygen");
+      progressCircle(event.data.players, ".id");
+      $("#idnumber").text(event.data.id);
       $("#time").text(event.data.time);
       if (Config.useFramework) {
         progressCircle(event.data.hunger, ".hunger");
@@ -42,6 +44,7 @@ window.addEventListener("message", function(event) {
       armorCircle.style.display = 'none';
       staminaCircle.style.display = 'none';
       oxygenCircle.style.display = 'none';
+      idCircle.style.display = 'none';
       microphoneCircle.style.display = 'none';
       if (Config.useFramework) {
         hungerCircle.style.display = 'none';
@@ -83,6 +86,7 @@ const startDraggable = ()=> {
   $("#armor").draggable();
   $("#stamina").draggable();
   $("#oxygen").draggable();
+  $("#id").draggable();
   $("#microphone").draggable();
   if (Config.useFramework) {
     $('#hunger').draggable();
@@ -98,6 +102,7 @@ const startColors = ()=> {
   $('#armor-circle').css('stroke', getStored('armorColor'));
   $('#stamina-circle').css('stroke', getStored('staminaColor'));
   $('#oxygen-circle').css('stroke', getStored('oxygenColor'));
+  $('#id-circle').css('stroke', getStored('idColor'));
   $('#microphone-circle').css('stroke', getStored('microphoneColor'));
   if (Config.useFramework) {
     $('#hunger-circle').css('stroke', getStored('hungerColor'));
@@ -114,6 +119,7 @@ const startPositions = ()=> {
   $("#stamina").animate({ top: getStored('dragStaminaTop'), left: getStored('dragStaminaLeft')});
   $("#oxygen").animate({ top: getStored('dragOxygenTop'), left: getStored('dragOxygenLeft')});
   $("#microphone").animate({ top: getStored('dragMicrophoneTop'), left: getStored('dragMicrophoneLeft')});
+  $("#id").animate({ top: getStored('dragIdTop'), left: getStored('dragIdLeft')});
   if (Config.useFramework) {
     $("#hunger").animate({ top: getStored('dragHungerTop'), left: getStored('dragHungerLeft')});
     $("#thirst").animate({ top: getStored('dragThirstTop'), left: getStored('dragThirstLeft')});
@@ -135,6 +141,7 @@ const startSliders = ()=> {
   setContainer('sliderArmor', 'check-armor', 'armor');
   setContainer('sliderStamina', 'check-stamina', 'stamina');
   setContainer('sliderOxygen', 'check-oxygen', 'oxygen');
+  setContainer('sliderId', 'check-id', 'id');
   setContainer('sliderMicrophone', 'check-microphone', 'microphone');
   if (Config.useFramework) {
     setContainer('sliderHunger', 'check-hunger', 'hunger');
@@ -157,6 +164,9 @@ const setSliders = ()=> {
   }
   if (null != getId('sliderOxygen')) {
     oxygen = getId('sliderOxygen')
+  }
+  if (null != getId('sliderId')) {
+    id = getId('sliderId')
   }
   if (null != getId('sliderMicrophone')) {
     microphone = getId('sliderMicrophone')
@@ -214,6 +224,10 @@ window.addEventListener('load', ()=> {
       case "microphone-option":
         colorPicker.value = rgb2hex($('#microphone-circle').css('stroke'))
       break;
+  
+      case "id-option":
+        colorPicker.value = rgb2hex($('#id-circle').css('stroke'))
+      break;
     };
   $('#selection').blur();
   });
@@ -245,6 +259,11 @@ let updateColorPicker = (event)=> {
     case "microphone-option":
       $('#microphone-circle').css('stroke', color);
       saveId('microphoneColor', color);
+    break;
+
+    case "id-option":
+      $('#id-circle').css('stroke', color);
+      saveId('idColor', color);
     break;
 
     case "hunger-option":

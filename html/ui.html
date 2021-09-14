@@ -57,6 +57,11 @@
           <circle class="progressplayer microphone" id="microphone-circle" stroke="#ff6f00" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
           <image href="./img/logos/microphone.png" height="17" width="17" x="26%" y="47.5%"></image>
         </svg>
+
+        <svg class="circle" id="id" width="60" height="60">
+          <circle class="progressplayer id" id="id-circle" stroke="#FF0046" stroke-width="4.5" style="stroke-opacity: 1.0" fill="#000000" r="20" cx="24" cy="24" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+          <text class="idnumber" id="idnumber" x="40%" y="62.5%" dominant-baseline="middle" text-anchor="middle">123</text>
+        </svg>
       </div>
     </div>
 
@@ -118,6 +123,12 @@
               <p class="switch-title">Microphone</p>
             </label>
             <label class="switch">
+              <input id="check-id" type="checkbox" checked>
+              <span class="slider"></span>
+              <img class="slider-image" id="slider-id" src="./img/logos/id.png" alt="id"></img>
+              <p class="switch-title">ID</p>
+            </label>
+            <label class="switch">
               <input id="check-cinematic" type="checkbox">
               <span class="slider"></span>
               <img class="slider-image" id="slider-cinematic" src="./img/logos/cinematic.png" alt="movie"></img>
@@ -153,6 +164,7 @@
               <option class="options" value="stamina-option">Stamina</option>
               <option class="options" value="oxygen-option">Oxygen</option>
               <option class="options" value="microphone-option">Microphone</option>
+              <option class="options" value="id-option">Id</option>
             </select>
             <button id="reset-color" class="reset-buttons">Reset colors</button>
             <button id="reset-position" class="reset-buttons">Reset positions</button>

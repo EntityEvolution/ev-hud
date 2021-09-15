@@ -156,12 +156,6 @@ CreateThread(function()
 	end
 end)
 
-CreateThread(function()
-    while isOpen do
-        DisableControlAction(0, 322, true)
-    end
-end)
-
 -- NUI callbacks
 RegisterNUICallback('close', function()
 	if isOpen then

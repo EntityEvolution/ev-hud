@@ -163,7 +163,6 @@ const saveData = ()=> {
     saveId('sliderStamina', stamina);
     saveId('sliderOxygen', oxygen);
     saveId('sliderMicrophone', microphone);
-    saveId('sliderId', id);
     if (Config.useFramework) {
         saveId('sliderHunger', hunger);
         saveId('sliderThirst', thirst);

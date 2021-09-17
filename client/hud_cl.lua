@@ -4,6 +4,15 @@ local anim = 'cellphone_text_in'
 
 -- Handlers
 AddEventHandler('esx_status:onTick', function(status)
+	-- Check for map status
+	if IsPauseMenuActive() and not isPaused then
+		isPaused = true
+		SendNUIMessage({action = "isPaused"})
+	elseif not IsPauseMenuActive() and isPaused then
+		isPaused = false
+		SendNUIMessage({action = "notPaused"})
+	end
+
 	-- Player variables for UI
 	local hunger, thirst, stress = 100, 100, 0
 	for _, v in pairs(status) do
@@ -31,7 +40,6 @@ AddEventHandler('esx_status:onTick', function(status)
 		hunger = hunger,
 		thirst = thirst,
 		stress = stress,
-		id = id,
 		time = hours .. ':' .. minutes
 	})
 end)

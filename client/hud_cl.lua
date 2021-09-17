@@ -18,13 +18,13 @@ AddEventHandler('esx_status:onTick', function(status)
 	for _, v in pairs(status) do
 		hunger = v.name == 'hunger' and v.percent
 		thirst = v.name == 'thirst' and v.percent
-		stress = v.name == 'stress' and v.percent
+		stress = Config.useStress and v.name == 'stress' and v.percent
 	end
 	local ped, player = PlayerPedId(), PlayerId()
 	local health = not IsEntityDead(ped) and math.ceil(200 - GetEntityHealth(ped)) or 0
-	local oxygen = GetPlayerUnderwaterTimeRemaining(player) * Config.oxygenMax
-	local stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player))
-	local armor, id = GetPedArmour(ped), GetPlayerServerId(player)
+	local oxygen = GetPlayerUnderwaterTimeRemaining(player) * Config.oxygenMax or 100
+	local stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100
+	local armor = GetPedArmour(ped) or 0
 	local minutes, hours = GetClockMinutes(), GetClockHours()
 
 	if minutes <= 9 then minutes = '0' .. minutes end
@@ -39,7 +39,7 @@ AddEventHandler('esx_status:onTick', function(status)
 		oxygen = oxygen,
 		hunger = hunger,
 		thirst = thirst,
-		stress = stress,
+		stress = stress or 0,
 		time = hours .. ':' .. minutes
 	})
 end)

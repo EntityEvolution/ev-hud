@@ -85,7 +85,6 @@ end)
 
 -- Opening Menu
 RegisterCommand(Config.hudCommand, function()
-	SetPedArmour(PlayerPedId(), 100)
 	if not isOpen and not isPaused then
 		isOpen = true
 		SendNUIMessage({ action = 'show' })

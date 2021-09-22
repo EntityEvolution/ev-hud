@@ -67,10 +67,12 @@ window.addEventListener('load', () => {
   
     checkOxygen.addEventListener('click', () => {
       oxygen = checkOxygen.checked
-      if (oxygen) {
-        oxygenCircle.style.display = 'inline-block';
-      } else {
-        oxygenCircle.style.display = 'none'
+      if (hideOxygen) {
+        if (oxygen) {
+          oxygenCircle.style.display = 'inline-block';
+        } else {
+          oxygenCircle.style.display = 'none'
+        }
       }
     })
   

@@ -1,4 +1,4 @@
-local isOpen, isPaused, isTalking
+local isOpen, isPaused, isTalking, isUnderwater
 local prop, model = 0, -1038739674
 local anim = 'cellphone_text_in'
 
@@ -11,21 +11,6 @@ AddEventHandler('esx_status:onTick', function(status)
 	elseif not IsPauseMenuActive() and isPaused then
 		isPaused = false
 		SendNUIMessage({action = "notPaused"})
-	end
-
-	-- Check if player is talking
-	if NetworkIsPlayerTalking(player) and not isTalking then
-		isTalking = true
-		SendNUIMessage({
-			action = 'talking',
-			talking = true
-		})
-	elseif not NetworkIsPlayerTalking(player) and isTalking then
-		isTalking = false
-		SendNUIMessage({
-			action = 'talking',
-			talking = false
-		})
 	end
 
 	-- Player variables for UI
@@ -46,6 +31,38 @@ AddEventHandler('esx_status:onTick', function(status)
 	if minutes <= 9 then minutes = '0' .. minutes end
 	if hours <= 9 then hours = '0' .. hours end
 
+	-- Check if player is talking
+	if NetworkIsPlayerTalking(player) and not isTalking then
+		isTalking = true
+		SendNUIMessage({
+			action = 'talking',
+			talking = true
+		})
+	elseif not NetworkIsPlayerTalking(player) and isTalking then
+		isTalking = false
+		SendNUIMessage({
+			action = 'talking',
+			talking = false
+		})
+	end
+
+	local isSwimming = IsPedSwimmingUnderWater(ped)
+	if Config.hideOxygen then
+		if isSwimming and not isUnderwater then
+			isUnderwater = true
+			SendNUIMessage({
+				action = 'swimming',
+				swimming = true
+			})
+		elseif not isSwimming and isUnderwater then
+			isUnderwater = false
+			SendNUIMessage({
+				action = 'swimming',
+				swimming = false
+			})
+		end
+	end
+
 	--Sending Message to UI
 	SendNUIMessage({
 		action = 'hud',
@@ -64,6 +81,10 @@ AddEventHandler('playerSpawned', function()
 	Wait(2500)
 	SendNUIMessage({ action = 'startUp' })
 	TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
+	SendNUIMessage({
+		action = 'swimming',
+		swimming = not Config.hideOxygen
+	})
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
@@ -71,6 +92,10 @@ AddEventHandler('onResourceStart', function(resourceName)
 		TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 		Wait(2500)
 		SendNUIMessage({ action = 'startUp' })
+		SendNUIMessage({
+			action = 'swimming',
+			swimming = not Config.hideOxygen
+		})
 	end
 end)
 

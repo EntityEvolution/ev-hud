@@ -1,6 +1,6 @@
 const selection = doc.getElementById('selection');
-let talkingColor = '#FF4C4C'
-
+let talkingColor = '#FF4C4C';
+let hideOxygen = false;
 // Load draggable
 window.addEventListener('load', () => {
   frameworkStartUp();
@@ -71,6 +71,17 @@ window.addEventListener("message", function(event) {
         $('#microphone-circle').css('stroke', talkingColor)
       } else {
         $('#microphone-circle').css('stroke', getStored('microphoneColor') || '#ff6f00')
+      }
+    break;
+
+    case "swimming":
+      hideOxygen = event.data.swimming
+      if (oxygen) {
+        if (event.data.swimming) {
+          oxygenCircle.style.display = 'inline-block';
+        } else {
+          oxygenCircle.style.display = 'none';
+        }
       }
     break;
   }

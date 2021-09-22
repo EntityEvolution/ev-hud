@@ -6,6 +6,8 @@ const colorPicker = doc.querySelector('.colorpicker')
 let dragHealthTop, dragHealthLeft, dragArmorTop, dragArmorLeft, dragStaminaTop, dragStaminaLeft, dragOxygenTop, dragOxygenLeft, dragMicrophoneTop, dragMicrophoneLeft, dragIdTop, dragIdLeft, dragHungerTop, dragHungerLeft, dragThirstTop, dragThirstLeft, dragStressTop, dragStressLeft;
 dragHealthTop = dragHealthLeft = dragArmorTop = dragArmorLeft = dragStaminaTop = dragStaminaLeft = dragOxygenTop = dragOxygenLeft = dragMicrophoneTop = dragMicrophoneLeft = dragIdTop = dragIdLeft = dragHungerTop = dragHungerLeft = dragThirstTop = dragThirstLeft = dragStressTop = dragStressLeft = 0;
 
+let dragMainTop, dragMainLeft;
+dragMainTop = dragMainLeft = 0
 // Dark mode
 document.querySelector('.invert-btn').addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -88,6 +90,11 @@ document.getElementById('reset-position').addEventListener('click', () => {
 });
 
 // Record the position
+$("#main").on("dragstop", function(event, ui) {
+    dragMainTop = ui.position.top;
+    dragMainLeft = ui.position.left;
+});
+
 $("#health").on("dragstop", function(event, ui) {
     dragHealthTop = ui.position.top;
     dragHealthLeft = ui.position.left;
@@ -147,6 +154,8 @@ const saveData = ()=> {
     saveId('dragOxygenLeft', dragOxygenLeft);
     saveId('dragMicrophoneTop', dragMicrophoneTop);
     saveId('dragMicrophoneLeft', dragMicrophoneLeft);
+    saveId('dragMainTop', dragMainTop);
+    saveId('dragMainLeft', dragMainLeft);
     if (Config.useFramework) {
         saveId('dragHungerTop', dragHungerTop);
         saveId('dragHungerLeft', dragHungerLeft);
@@ -163,6 +172,7 @@ const saveData = ()=> {
     saveId('sliderStamina', stamina);
     saveId('sliderOxygen', oxygen);
     saveId('sliderMicrophone', microphone);
+    saveId('sliderBreak', separate);
     if (Config.useFramework) {
         saveId('sliderHunger', hunger);
         saveId('sliderThirst', thirst);
@@ -188,6 +198,9 @@ const resetDrag = ()=> {
     $("#microphone").animate({ top: "0px", left: "0px" });
     saveId('dragMicrophoneTop', '0px');
     saveId('dragMicrophoneLeft', '0px');
+    $("#main").animate({ top: "0px", left: "0px" });
+    saveId('dragMainTop', '0px');
+    saveId('dragMainLeft', '0px');
     if (Config.useFramework) {
         $("#hunger").animate({top: "0px", left: "0px"});
         saveId('dragHungerTop', '0px');

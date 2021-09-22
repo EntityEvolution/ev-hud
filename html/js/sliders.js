@@ -7,6 +7,7 @@ const checkStamina = doc.getElementById('check-stamina')
 const checkOxygen = doc.getElementById('check-oxygen')
 const checkMic = doc.getElementById('check-microphone')
 const checkCinematic = doc.getElementById('check-cinematic')
+const checkBreak = doc.getElementById('check-break')
 
 // Hud ids
 const healthCircle = doc.getElementById('health')
@@ -35,6 +36,7 @@ let health, armor, stamina, oxygen, microphone, hunger, thirst, stress;
 health = armor = stamina = oxygen = microphone = hunger = thirst = stress = true;
 
 let cinematic = false;
+let separate = true;
 
 // Sliders saving
 window.addEventListener('load', () => {
@@ -104,6 +106,41 @@ window.addEventListener('load', () => {
       }
     })
   
+    checkBreak.addEventListener('click', () => {
+      separate = checkBreak.checked
+      if (separate) {
+        $("#main").draggable({ disabled: true });
+
+        $('#health').draggable({ disabled: false});
+        $("#armor").draggable({ disabled: false});
+        $("#stamina").draggable({ disabled: false});
+        $("#oxygen").draggable({ disabled: false});
+        $("#microphone").draggable({ disabled: false});
+        if (Config.useFramework) {
+          $('#hunger').draggable({ disabled: false});
+          $('#thirst').draggable({ disabled: false});
+          if (Config.useStress) {
+            $('#stress').draggable({ disabled: false});
+          };
+        };
+      } else {
+        $("#main").draggable({ disabled: false });
+
+        $('#health').draggable({ disabled: true});
+        $("#armor").draggable({ disabled: true});
+        $("#stamina").draggable({ disabled: true});
+        $("#oxygen").draggable({ disabled: true});
+        $("#microphone").draggable({ disabled: true});
+        if (Config.useFramework) {
+          $('#hunger').draggable({ disabled: true});
+          $('#thirst').draggable({ disabled: true});
+          if (Config.useStress) {
+            $('#stress').draggable({ disabled: true});
+          };
+        };
+      }
+    })
+
     if (Config.useFramework) {
       checkHunger.addEventListener('click', () => {
         hunger = checkHunger.checked
@@ -113,7 +150,7 @@ window.addEventListener('load', () => {
           hungerCircle.style.display = 'none'
         }
       })
-      
+
       checkThirst.addEventListener('click', () => {
         thirst = checkThirst.checked
         if (thirst) {

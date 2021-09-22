@@ -4,6 +4,12 @@ let hideOxygen = false;
 // Load draggable
 window.addEventListener('load', () => {
   frameworkStartUp();
+  startPhone();
+  startDraggable();
+  startColors();
+  startColorpicker();
+  startPositions();
+  startSliders();
 });
 
 // Switches & Cases
@@ -99,6 +105,7 @@ document.onkeyup = function(event) {
 
 // Initialization
 const startDraggable = ()=> {
+  $('#main').draggable();
   $('#health').draggable();
   $("#armor").draggable();
   $("#stamina").draggable();
@@ -143,6 +150,7 @@ const startPositions = ()=> {
       $("#stress").animate({ top: getStored('dragStressTop'), left: getStored('dragStressLeft')});
     };
   };
+  $("#main").animate({ top: getStored('dragMainTop'), left: getStored('dragMainLeft')});
 }
 
 const startColorpicker = ()=> {
@@ -158,6 +166,8 @@ const startSliders = ()=> {
   setContainer('sliderStamina', 'check-stamina', 'stamina');
   setContainer('sliderOxygen', 'check-oxygen', 'oxygen');
   setContainer('sliderMicrophone', 'check-microphone', 'microphone');
+  setContainer('slider', 'check-microphone', 'microphone');
+  setBreak();
   if (Config.useFramework) {
     setContainer('sliderHunger', 'check-hunger', 'hunger');
     setContainer('sliderThirst', 'check-thirst', 'thirst');
@@ -182,6 +192,9 @@ const setSliders = ()=> {
   }
   if (null != getId('sliderMicrophone')) {
     microphone = getId('sliderMicrophone')
+  }
+  if (null != getId('sliderBreak')) {
+    separate = getId('sliderBreak')
   }
   if (Config.useFramework) {
     if (null != getId('sliderHunger')) {
@@ -321,6 +334,46 @@ function setContainer(slider, check, container) {
       doc.getElementById(container).style.display = 'inline-block';
     } else {
       doc.getElementById(container).style.display = 'none';
+    }
+  }
+}
+
+const setBreak = () => {
+  if (getId('sliderBreak') == null) {
+    checkBreak.checked = true;
+    return
+  } else {
+    checkBreak.checked = getId('sliderBreak')
+    if (getId('sliderBreak')) {
+      $("#main").draggable({ disabled: true });
+
+      $('#health').draggable({ disabled: false});
+      $("#armor").draggable({ disabled: false});
+      $("#stamina").draggable({ disabled: false});
+      $("#oxygen").draggable({ disabled: false});
+      $("#microphone").draggable({ disabled: false});
+      if (Config.useFramework) {
+        $('#hunger').draggable({ disabled: false});
+        $('#thirst').draggable({ disabled: false});
+        if (Config.useStress) {
+          $('#stress').draggable({ disabled: false});
+        };
+      };
+    } else {
+      $("#main").draggable({ disabled: false });
+
+      $('#health').draggable({ disabled: true});
+      $("#armor").draggable({ disabled: true});
+      $("#stamina").draggable({ disabled: true});
+      $("#oxygen").draggable({ disabled: true});
+      $("#microphone").draggable({ disabled: true});
+      if (Config.useFramework) {
+        $('#hunger').draggable({ disabled: true});
+        $('#thirst').draggable({ disabled: true});
+        if (Config.useStress) {
+          $('#stress').draggable({ disabled: true});
+        };
+      };
     }
   }
 }

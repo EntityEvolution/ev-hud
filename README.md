@@ -10,8 +10,8 @@ This project does not contain a license, therefore you are not allowed to add on
 ## Framework
 - PMA-voice ~ Go to your pma-voice, and between 194-195, add the following `exports['ev-hud']:CurrentVoiceMode(voiceMode)`
 - ESX ~ Set config to true and config.js framework to true.
-- VRP ~ Uncomment fxmanifest, set config to true and config.js framework to true.
-- QBCore ~ Uncomment fxmanifest, set config to true (stress available too) and config.js framework to true (stress to true if using it). Stress is not handled by the hud, it just displays the stress.
+
+- This version includes break, 0.00 resmon, and config for hide oxygen + other stuff.
 
 ## Features
  - Color picker
@@ -19,10 +19,8 @@ This project does not contain a license, therefore you are not allowed to add on
  - Hide when paused
  - Save colors, position, and switches
  - Cinematic bars, id, and status
- - Visual microphone
- - Config for ESX and [Stress](https://github.com/utkuali/Stress-System-by-utku) `(config.lua and config.js)`
- - Config for VRP (by Synter) `(config.lua, config.js and fxmanifest)`
- - Config for QBCore `(config.lua, config.js and fxmanifest)`
+ - Visual microphone with 
+ - Config for ESX and [Stress](https://github.com/utkuali/Stress-System-by-utku) (it can be other stress) `(config.lua and config.js)`
 
 ## Screenshot
 ![Image](https://imgur.com/kcnEUhe.png)

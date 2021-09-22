@@ -4,12 +4,6 @@ let hideOxygen = false;
 // Load draggable
 window.addEventListener('load', () => {
   frameworkStartUp();
-  startPhone();
-  startDraggable();
-  startColors();
-  startColorpicker();
-  startPositions();
-  startSliders();
 });
 
 // Switches & Cases

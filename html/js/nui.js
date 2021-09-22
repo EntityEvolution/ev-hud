@@ -216,6 +216,7 @@ const resetColors = ()=> {
     saveId('oxygenColor', '');
     $('#microphone-circle').css('stroke', '');
     saveId('microphoneColor', '');
+    saveId('talkingColor', '')
     if (Config.useFramework) {
         $('#hunger-circle').css('stroke', '');
         saveId('hungerColor', '');

@@ -1,4 +1,5 @@
-const selection = doc.getElementById('selection')
+const selection = doc.getElementById('selection');
+let talkingColor = '#FF4C4C'
 
 // Load draggable
 window.addEventListener('load', () => {
@@ -10,8 +11,8 @@ window.addEventListener("message", function(event) {
   switch (event.data.action) {
     case "startUp":
       startDraggable();
-      startColorpicker();
       startColors();
+      startColorpicker();
       startPositions();
       startSliders();
     break;
@@ -64,6 +65,14 @@ window.addEventListener("message", function(event) {
     case "voiceMode":
       progressCircle(event.data.microphone, ".microphone");
     break;
+
+    case "talking":
+      if (event.data.talking) {
+        $('#microphone-circle').css('stroke', talkingColor)
+      } else {
+        $('#microphone-circle').css('stroke', getStored('microphoneColor') || '#ff6f00')
+      }
+    break;
   }
 });
 
@@ -99,9 +108,11 @@ const startColors = ()=> {
   $('#stamina-circle').css('stroke', getStored('staminaColor'));
   $('#oxygen-circle').css('stroke', getStored('oxygenColor'));
   $('#microphone-circle').css('stroke', getStored('microphoneColor'));
+  talkingColor = getStored('talkingColor') || '#FF4C4C'
   if (Config.useFramework) {
     $('#hunger-circle').css('stroke', getStored('hungerColor'));
     $('#thirst-circle').css('stroke', getStored('thirstColor'));
+
     if (Config.useStress) {
       $("#stress-circle").css('stroke', getStored('stressColor'));
     };
@@ -214,6 +225,10 @@ window.addEventListener('load', ()=> {
       case "microphone-option":
         colorPicker.value = rgb2hex($('#microphone-circle').css('stroke'))
       break;
+
+      case "talking-option":
+        colorPicker.value = talkingColor
+      break;
     };
   $('#selection').blur();
   });
@@ -260,6 +275,10 @@ let updateColorPicker = (event)=> {
     case "stress-option":
       $('#stress-circle').css('stroke', color);
       saveId('stressColor', color);
+    break;
+
+    case "talking-option":
+      saveId('talkingColor', color);
     break;
   };
 }

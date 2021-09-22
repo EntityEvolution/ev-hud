@@ -1,4 +1,4 @@
-local isOpen, isPaused
+local isOpen, isPaused, isTalking
 local prop, model = 0, -1038739674
 local anim = 'cellphone_text_in'
 
@@ -13,16 +13,32 @@ AddEventHandler('esx_status:onTick', function(status)
 		SendNUIMessage({action = "notPaused"})
 	end
 
+	-- Check if player is talking
+	if NetworkIsPlayerTalking(player) and not isTalking then
+		isTalking = true
+		SendNUIMessage({
+			action = 'talking',
+			talking = true
+		})
+	elseif not NetworkIsPlayerTalking(player) and isTalking then
+		isTalking = false
+		SendNUIMessage({
+			action = 'talking',
+			talking = false
+		})
+	end
+
 	-- Player variables for UI
 	local hunger, thirst, stress = 100, 100, 0
 	for _, v in pairs(status) do
-		hunger = v.name == 'hunger' and v.percent
-		thirst = v.name == 'thirst' and v.percent
-		stress = Config.useStress and v.name == 'stress' and v.percent
+		if v.name == 'hunger' then hunger = v.percent
+		elseif v.name == 'thirst' then thirst = v.percent
+		elseif Config.useStress and v.name == 'stress' then stress = v.percent
+		end
 	end
 	local ped, player = PlayerPedId(), PlayerId()
-	local health = not IsEntityDead(ped) and math.ceil(200 - GetEntityHealth(ped)) or 0
-	local oxygen = GetPlayerUnderwaterTimeRemaining(player) * Config.oxygenMax or 100
+	local health = not IsEntityDead(ped) and math.ceil(GetEntityHealth(ped) - 100) or 0
+	local oxygen = (GetPlayerUnderwaterTimeRemaining(player) * Config.oxygenMax) or 100
 	local stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100
 	local armor = GetPedArmour(ped) or 0
 	local minutes, hours = GetClockMinutes(), GetClockHours()
@@ -69,6 +85,7 @@ end)
 
 -- Opening Menu
 RegisterCommand(Config.hudCommand, function()
+	SetPedArmour(PlayerPedId(), 100)
 	if not isOpen and not isPaused then
 		isOpen = true
 		SendNUIMessage({ action = 'show' })
@@ -99,6 +116,7 @@ end
 
 function StopAnim()
 	if prop ~= 0 then
+		local dict = IsPedInAnyVehicle(ped, false) and "anim@cellphone@in_car@ps" or 'cellphone@'
 		local ped = PlayerPedId()
 		DeleteEntity(prop)
 		StopAnimTask(ped, dict, anim, 1.0)

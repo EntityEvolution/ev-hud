@@ -1,6 +1,8 @@
 ## ev-hud
 A simple HUD with multiple customization options.
 
+[ESX Optimized Version](https://github.com/EntityEvolution/ev-hud/tree/esx)
+
 ### [Discord](https://discord.com/invite/u4zk4tVTkG)
 ### [Donations](https://www.buymeacoffee.com/bombayV)
 

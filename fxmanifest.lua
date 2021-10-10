@@ -2,13 +2,12 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-version '3.3.0'
+version '4.0.0'
 
-description 'Standalone hud created by a Entity Evolution'
+description 'Standalone hud with framework supporrt created by a Entity Evolution'
 
 lua54 'yes'
-
---shared_script '@qb-core/import.lua' -- Uncomment if you're planning to use QBCore
+use_fxv2_oal 'yes'
 
 client_scripts {
 	--'@vrp/lib/utils.lua', -- Uncomment if you're planning on using VRP Framework

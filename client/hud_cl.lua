@@ -149,7 +149,7 @@ if state ~= 'esx' then
 						thirst = Player.metadata['thirst'] or 100,
 						stress = Player.metadata['stress'] or 0,
 						oxygen = (GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier) or 0,
-						id = Player.cid,
+						id = GetPlayerServerId(player),
 						players = #GetActivePlayers() * 100 / Config.maxPlayers,
 						time = hours .. ":" .. minutes
 					})

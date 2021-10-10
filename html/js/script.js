@@ -6,14 +6,14 @@ window.addEventListener('load', () => {
 });
 
 // Switches & Cases
-window.addEventListener("message", function(event) {
+this.addEventListener("message", function(event) {
   switch (event.data.action) {
     case "startUp":
       startDraggable();
-      startColorpicker();
       startColors();
       startPositions();
       startSliders();
+      startColorpicker();
     break;
 
     case "show":
@@ -66,6 +66,14 @@ window.addEventListener("message", function(event) {
 
     case "voiceMode":
       progressCircle(event.data.microphone, ".microphone");
+    break;
+
+    case "talking":
+      if (event.data.talking) {
+        $('#microphone-circle').css('stroke', Config.TalkingColor)
+      } else {
+        $('#microphone-circle').css('stroke', getStored('microphoneColor') || '#ff6f00')
+      }
     break;
   }
 });

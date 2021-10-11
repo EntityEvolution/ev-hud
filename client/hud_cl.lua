@@ -6,7 +6,7 @@ local GetEntityHealth = GetEntityHealth
 local IsEntityDead = IsEntityDead
 
 -- Variables
-local isOpen, isPaused, isTalking, isLoggedIn = nil, nil, false, true
+local isOpen, isPaused, isTalking = nil, nil, false
 local whisper, normal, shout = 33, 66, 100
 local microphone = Config.voiceDefault
 local hunger, thirst, stress = 100.0, 100.0, 0.0
@@ -32,18 +32,6 @@ if state == 'vrp' then
 	local Tunnel = module("vrp", "lib/Tunnel")
 	local Proxy = module("vrp", "lib/Proxy")
 	vRP = Proxy.getInterface("vRP")
-end
-
-if state == 'qbcore' then
-	RegisterNetEvent('QBCore:Client:OnPlayerUnload')
-	AddEventHandler('QBCore:Client:OnPlayerUnload', function()
-		isLoggedIn = false
-	end)
-
-	RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
-	AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
-		isLoggedIn = true
-	end)
 end
 
 if state == 'esx' then
@@ -138,7 +126,7 @@ if state ~= 'esx' then
 					time = hours .. ":" .. minutes
 				})
 			elseif state == 'qbcore' then
-				if isLoggedIn then
+				if LocalPlayer.state.isLoggedIn then
 					local Player = QBCore.Functions.GetPlayerData()
 					SendNUIMessage({
 						action = "hud",

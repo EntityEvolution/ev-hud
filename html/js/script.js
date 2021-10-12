@@ -3,19 +3,16 @@ const selection = doc.getElementById('selection')
 // Load draggable
 window.addEventListener('load', () => {
   frameworkStartUp();
+  startDraggable();
+  startColors();
+  startPositions();
+  startSliders();
+  startColorpicker();
 });
 
 // Switches & Cases
 this.addEventListener("message", function(event) {
   switch (event.data.action) {
-    case "startUp":
-      startDraggable();
-      startColors();
-      startPositions();
-      startSliders();
-      startColorpicker();
-    break;
-
     case "show":
       startPhone();
     break;

@@ -131,7 +131,7 @@ if state ~= 'esx' then
 					SendNUIMessage({
 						action = "hud",
 						health = GetEntityHealth(ped) - 100,
-						armor = Player.metadata['armor'] or 0,
+						armor = GetPedArmour(ped) or 0,
 						stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
 						hunger = Player.metadata['hunger'] or 100,
 						thirst = Player.metadata['thirst'] or 100,

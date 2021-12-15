@@ -30,3 +30,10 @@ This project does not contain a license, therefore you are not allowed to add on
 ### Acknowledgement
 - [Progress Circle](https://github.com/nafing/esx_nafing_hud/blob/master/html/main.js#L59)
 - [Regex](https://stackoverflow.com/a/3627747)
+
+## Notes (ignore)
+- Framework accounts
+- Logo?
+- Hide on car
+
+- Hide oxygen until is underwater.

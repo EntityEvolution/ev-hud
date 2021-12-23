@@ -19,3 +19,5 @@ Config.voiceCommand = 'levelVoice' -- Voice cycle command name
 Config.voiceKey     = 'h' -- Cycles through modes (has to match your voip script key)
 Config.voiceDesc    = 'Adjust the voice range' -- Keybind description
 Config.voiceDefault = 66 -- Whisper: 33, Normal: 66, Shout: 100,
+
+Config.HideMiniMap = true

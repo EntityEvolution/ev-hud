@@ -265,3 +265,18 @@ function StopAnim()
 		prop = 0
 	end
 end
+
+CreateThread(function()
+	while true do
+	Citizen.Wait(0)
+	
+		local playerPed = PlayerPedId()
+		local playerVeh = GetVehiclePedIsIn(playerPed, false)
+
+		if DoesEntityExist(playerVeh) then
+			DisplayRadar(true)
+		else
+			DisplayRadar(false)
+		end
+	end
+end)

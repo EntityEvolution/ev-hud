@@ -265,3 +265,10 @@ function StopAnim()
 		prop = 0
 	end
 end
+
+CreateThread(function()
+    while Config.VehicleOnlyRadar do
+		DisplayRadar(GetVehiclePedIsIn(PlayerPedId(), false) > 0)
+        Wait(500)
+	end
+end)

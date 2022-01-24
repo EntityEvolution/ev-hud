@@ -36,56 +36,7 @@ end
 
 if state == 'esx' then
 	AddEventHandler('esx_status:onTick', function(status)
-		if IsPauseMenuActive() and not isPaused then
-			isPaused = true
-			SendNUIMessage({action = "isPaused"})
-		elseif not IsPauseMenuActive() and isPaused then
-			isPaused = false
-			SendNUIMessage({action = "notPaused"})
-		end
-		for _, v in pairs(status) do
-			if v.name == 'hunger' then hunger = v.percent
-			elseif v.name == 'thirst' then thirst = v.percent
-			elseif v.name == 'stress' then stress = v.percent
-			end
-		end
-		local ped = PlayerPedId()
-		local player = PlayerId()
-		if NetworkIsPlayerTalking(player) and not isTalking then
-			isTalking = true
-			SendNUIMessage({
-				action = 'talking',
-				talking = true
-			})
-		elseif not NetworkIsPlayerTalking(player) and isTalking then
-			isTalking = false
-			SendNUIMessage({
-				action = 'talking',
-				talking = false
-			})
-		end
-		local minutes, hours = GetClockMinutes(), GetClockHours()
-		if minutes <= 9 then minutes = '0' .. minutes end
-		if hours <= 9 then hours = '0' .. hours end
-		SendNUIMessage({
-			action = "hud",
-			health = not IsEntityDead(ped) and math.ceil(GetEntityHealth(ped) - 100) or 0,
-			armor = GetPedArmour(ped),
-			stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
-			hunger = hunger or 0,
-			thirst = thirst or 0,
-			stress = stress or 0,
-			oxygen = GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier,
-			id = GetPlayerServerId(player),
-			players = #GetActivePlayers() * 100 / Config.maxPlayers,
-			time = hours .. ":" .. minutes
-		})
-	end)
-end
-
-if state ~= 'esx' then
-	CreateThread(function()
-		while true do
+		if Config.WaitTillSpawn then
 			if IsPauseMenuActive() and not isPaused then
 				isPaused = true
 				SendNUIMessage({action = "isPaused"})
@@ -93,9 +44,14 @@ if state ~= 'esx' then
 				isPaused = false
 				SendNUIMessage({action = "notPaused"})
 			end
+			for _, v in pairs(status) do
+				if v.name == 'hunger' then hunger = v.percent
+				elseif v.name == 'thirst' then thirst = v.percent
+				elseif v.name == 'stress' then stress = v.percent
+				end
+			end
 			local ped = PlayerPedId()
 			local player = PlayerId()
-
 			if NetworkIsPlayerTalking(player) and not isTalking then
 				isTalking = true
 				SendNUIMessage({
@@ -112,35 +68,83 @@ if state ~= 'esx' then
 			local minutes, hours = GetClockMinutes(), GetClockHours()
 			if minutes <= 9 then minutes = '0' .. minutes end
 			if hours <= 9 then hours = '0' .. hours end
-			if state == 'vrp' then
-				SendNUIMessage({
-					action = "hud",
-					health = vRP.getHealth(),
-					armor = vRP.getArmour(),
-					stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
-					hunger = vRP.getHunger(),
-					thirst = vRP.getThirst(),
-					oxygen = (GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier) or 0,
-					id = vRP.getUserId(),
-					players = #GetActivePlayers() * 100 / Config.maxPlayers,
-					time = hours .. ":" .. minutes
-				})
-			elseif state == 'qbcore' then
-				if LocalPlayer.state.isLoggedIn then
-					local Player = QBCore.Functions.GetPlayerData()
+			SendNUIMessage({
+				action = "hud",
+				health = not IsEntityDead(ped) and math.ceil(GetEntityHealth(ped) - 100) or 0,
+				armor = GetPedArmour(ped),
+				stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
+				hunger = hunger or 0,
+				thirst = thirst or 0,
+				stress = stress or 0,
+				oxygen = GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier,
+				id = GetPlayerServerId(player),
+				players = #GetActivePlayers() * 100 / Config.maxPlayers,
+				time = hours .. ":" .. minutes
+			})
+		end
+	end)
+end
+
+if state ~= 'esx' then
+	CreateThread(function()
+		while true do
+			if Config.WaitTillSpawn then
+				if IsPauseMenuActive() and not isPaused then
+					isPaused = true
+					SendNUIMessage({action = "isPaused"})
+				elseif not IsPauseMenuActive() and isPaused then
+					isPaused = false
+					SendNUIMessage({action = "notPaused"})
+				end
+				local ped = PlayerPedId()
+				local player = PlayerId()
+
+				if NetworkIsPlayerTalking(player) and not isTalking then
+					isTalking = true
+					SendNUIMessage({
+						action = 'talking',
+						talking = true
+					})
+				elseif not NetworkIsPlayerTalking(player) and isTalking then
+					isTalking = false
+					SendNUIMessage({
+						action = 'talking',
+						talking = false
+					})
+				end
+				local minutes, hours = GetClockMinutes(), GetClockHours()
+				if minutes <= 9 then minutes = '0' .. minutes end
+				if hours <= 9 then hours = '0' .. hours end
+				if state == 'vrp' then
 					SendNUIMessage({
 						action = "hud",
-						health = GetEntityHealth(ped) - 100,
-						armor = GetPedArmour(ped) or 0,
+						health = vRP.getHealth(),
+						armor = vRP.getArmour(),
 						stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
-						hunger = Player.metadata['hunger'] or 100,
-						thirst = Player.metadata['thirst'] or 100,
-						stress = Player.metadata['stress'] or 0,
+						hunger = vRP.getHunger(),
+						thirst = vRP.getThirst(),
 						oxygen = (GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier) or 0,
-						id = GetPlayerServerId(player),
+						id = vRP.getUserId(),
 						players = #GetActivePlayers() * 100 / Config.maxPlayers,
 						time = hours .. ":" .. minutes
 					})
+				elseif state == 'qbcore' then
+					if LocalPlayer.state.isLoggedIn then
+						local Player = QBCore.Functions.GetPlayerData()
+						SendNUIMessage({
+							action = "hud",
+							health = GetEntityHealth(ped) - 100,
+							armor = GetPedArmour(ped) or 0,
+							stamina = math.ceil(100 - GetPlayerSprintStaminaRemaining(player)) or 100,
+							hunger = Player.metadata['hunger'] or 100,
+							thirst = Player.metadata['thirst'] or 100,
+							stress = Player.metadata['stress'] or 0,
+							oxygen = (GetPlayerUnderwaterTimeRemaining(player) * oxygenMultiplier) or 0,
+							id = GetPlayerServerId(player),
+							players = #GetActivePlayers() * 100 / Config.maxPlayers,
+							time = hours .. ":" .. minutes
+						})
+					end
 				end
 			end
 			Wait(Config.waitTime)
@@ -270,5 +274,14 @@ CreateThread(function()
     while Config.VehicleOnlyRadar do
 		DisplayRadar(GetVehiclePedIsIn(PlayerPedId(), false) > 0)
         Wait(500)
+	end
+end)
+
+
+exports('StartHud', function(delay)
+	if not Config.WaitTillSpawn then
+		Config.WaitTillSpawn = true
+		Wait(delay or 0)
+		SendNUIMessage({action = "notPaused"})
 	end
 end)

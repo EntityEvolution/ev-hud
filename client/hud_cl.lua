@@ -282,6 +282,6 @@ exports('StartHud', function(delay)
 	if not Config.WaitTillSpawn then
 		Config.WaitTillSpawn = true
 		Wait(delay or 0)
-		SendNUIMessage({action = "notPaused"})
+		SendNUIMessage({action = "startHud"})
 	end
 end)

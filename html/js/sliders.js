@@ -40,180 +40,115 @@ let cinematic = false;
 
 // Sliders saving
 window.addEventListener('load', () => {
+
     checkHealth.addEventListener('click', () => {
-      health = checkHealth.checked
-      if (health) {
-        healthCircle.style.display = 'inline-block';
-      } else {
-        healthCircle.style.display = 'none';
-      }
+        health = checkHealth.checked;
+        healthCircle.style.display = health ? 'inline-block' : 'none';
     })
   
     checkArmor.addEventListener('click', () => {
-      armor = checkArmor.checked
-      if (armor) {
-        armorCircle.style.display = 'inline-block';
-      } else {
-        armorCircle.style.display = 'none'
-      }
+        armor = checkArmor.checked;
+        armorCircle.style.display = armor ? 'inline-block' : 'none'
     })
   
     checkStamina.addEventListener('click', () => {
-      stamina = checkStamina.checked
-      if (stamina) {
-        staminaCircle.style.display = 'inline-block';
-      } else {
-        staminaCircle.style.display = 'none'
-      }
+        stamina = checkStamina.checked;
+        staminaCircle.style.display = stamina ? 'inline-block' : 'none';
     })
   
     checkOxygen.addEventListener('click', () => {
-      oxygen = checkOxygen.checked
-      if (oxygen) {
-        oxygenCircle.style.display = 'inline-block';
-      } else {
-        oxygenCircle.style.display = 'none'
-      }
+        oxygen = checkOxygen.checked;
+        oxygenCircle.style.display = oxygen ? 'inline-block' : 'none';
     })
   
     checkMic.addEventListener('click', () => {
-      microphone = checkMic.checked
-      if (microphone) {
-        microphoneCircle.style.display = 'inline-block';
-      } else {
-        microphoneCircle.style.display = 'none'
-      }
+        microphone = checkMic.checked;
+        microphoneCircle.style.display = microphone ? 'inline-block' : 'none';
     })
   
     checkCinematic.addEventListener('click', () => {
-      cinematic = checkCinematic.checked
-      if (cinematic) {
-        doc.getElementById('top').style.animation = 'slideDown 1.0s forwards'
-        doc.getElementById('bottom').style.animation = 'slideUp 1.0s forwards'
-        setTimeout(function() {
-          cinemaId.style.animation = 'none'
+        
+        cinematic = checkCinematic.checked;
+        
+        doc.getElementById('top').style.animation = cinematic ? 'slideDown 1.0s forwards' : 'slideBackUp 1.0s forwards';
+        doc.getElementById('bottom').style.animation = cinematic ? 'slideUp 1.0s forwards' : 'slideBackDown 1.0s forwards';
+        
+        setCircles(cinematic ? 'hide' : 'show'); // moved this one up sinds the code below was executed later anyway
+        // https://www.youtube.com/watch?v=Kpn2ajSa92c <-- check out thisone for a better understanding
+
+        setTimeout(() => {
+            
+            cinemaId.style.animation = 'none';
+            
         }, 1100)
-        setCircles('hide');
-      } else {
-        doc.getElementById('top').style.animation = 'slideBackUp 1.0s forwards'
-        doc.getElementById('bottom').style.animation = 'slideBackDown 1.0s forwards'
-        setTimeout(function() {
-          cinemaId.style.animation = 'none'
-        }, 1100)
-        setCircles('show');
-      }
+        
     })
   
     checkId.addEventListener('click', () => {
-      id = checkId.checked
-      if (id) {
-        idCircle.style.display = 'inline-block';
-      } else {
-        idCircle.style.display = 'none';
-      }
+        id = checkId.checked
+        idCircle.style.display = id ? 'inline-block' : 'none';
     })
   
-    if (Config.useFramework) {
-      checkHunger.addEventListener('click', () => {
+    if (!Config.useFramework) return;
+    checkHunger.addEventListener('click', () => {
         hunger = checkHunger.checked
-        if (hunger) {
-          hungerCircle.style.display = 'inline-block';
-        } else {
-          hungerCircle.style.display = 'none'
-        }
-      })
-      
-      checkThirst.addEventListener('click', () => {
+        hungerCircle.style.display = hunger ? 'inline-block' : 'none';
+    })
+    checkThirst.addEventListener('click', () => {
         thirst = checkThirst.checked
-        if (thirst) {
-          thirstCircle.style.display = 'inline-block';
-        } else {
-          thirstCircle.style.display = 'none'
-        }
-      })
-      if (Config.useStress) {
-        checkStress.addEventListener('click', () => {
-          stress = checkStress.checked
-          if (stress) {
-            stressCircle.style.display = 'inline-block';
-          } else {
-            stressCircle.style.display = 'none'
-          }
-        })
-      };
-    };
-  })
+        thirstCircle.style.display = thirst ? 'inline-block' : 'none';
+    })
 
-const setCircles = (boolean)=> {
-    if (boolean == "show") {
-        if (health) {
-            healthCircle.style.display = 'inline-block';
-        } else {
-            healthCircle.style.display = 'none'
-        }
-        if (armor) {
-            armorCircle.style.display = 'inline-block';
-        } else {
-            armorCircle.style.display = 'none'
-        }
-        if (stamina) {
-            staminaCircle.style.display = 'inline-block';
-        } else {
-            staminaCircle.style.display = 'none'
-        }
-        if (oxygen) {
-            oxygenCircle.style.display = 'inline-block';
-        } else {
-            oxygenCircle.style.display = 'none'
-        }
-        if (id) {
-            idCircle.style.display = 'inline-block';
-        } else {
-            idCircle.style.display = 'none'
-        }
-        if (microphone) {
-            microphoneCircle.style.display = 'inline-block';
-        } else {
-            microphoneCircle.style.display = 'none'
-        }
-        if (Config.useFramework) {
-            if (hunger) {
-                hungerCircle.style.display = 'inline-block';
-            } else {
-                hungerCircle.style.display = 'none'
-            }
-            if (thirst) {
-                thirstCircle.style.display = 'inline-block';
-            } else {
-                thirstCircle.style.display = 'none'
-            }
-            if (Config.useStress) {
-                if (stress) {
-                    stressCircle.style.display = 'inline-block';
-                } else {
-                    stressCircle.style.display = 'none'
-                }
-            };
-        };
-    } else if (boolean == "hide") {
-        cinemaId.style.display = 'block';
-        healthCircle.style.display = 'none'
-        armorCircle.style.display = 'none'
-        staminaCircle.style.display = 'none'
-        oxygenCircle.style.display = 'none'
-        idCircle.style.display = 'none'
-        microphoneCircle.style.display = 'none'
-        if (Config.useFramework) {
-          hungerCircle.style.display = 'none'
-          thirstCircle.style.display = 'none'
-          if (Config.useStress) {
-            stressCircle.style.display = 'none'
-          }
-        }
+    if (!Config.useStress) return;
+    checkStress.addEventListener('click', () => {
+        stress = checkStress.checked
+        stressCircle.style.display = stress ? 'inline-block' : 'none';
+    })
+})
+
+const setCircles = state => {
+
+    switch (state) {  // changed 'boolean' to state cus yea bool only returns true or false
+            
+        case "show":
+            
+            healthCircle.style.display = health ? 'inline-block' : 'none';
+            armorCircle.style.display = armor ? 'inline-block' : 'none';
+            staminaCircle.style.display = stamina ? 'inline-block' : 'none';
+            oxygenCircle.style.display = oxygen ? 'inline-block' : 'none';
+            idCircle.style.display = id ? 'inline-block' : 'none';
+            microphoneCircle.style.display = microphone ? 'inline-block' : 'none';
+            
+            if (!Config.useFramework) break;
+            hungerCircle.style.display = hunger ? 'inline-block' : 'none';
+            thirstCircle.style.display = thirst ? 'inline-block' : 'none';
+            
+            if (!Config.useStress) break;
+            stressCircle.style.display = stress ? 'inline-block' : 'none';
+            
+            break;
+        case "hide":
+
+            cinemaId.style.display = 'block';
+            healthCircle.style.display = 'none';
+            armorCircle.style.display = 'none';
+            staminaCircle.style.display = 'none';
+            oxygenCircle.style.display = 'none';
+            idCircle.style.display = 'none';
+            microphoneCircle.style.display = 'none';
+    
+            if (!Config.useFramework) break;
+            hungerCircle.style.display = 'none';
+            thirstCircle.style.display = 'none';
+
+            if (!Config.useStress) break;
+            stressCircle.style.display = 'none';
+            break;
+
     }
 }
 
-const frameworkStartUp = ()=> {
+const frameworkStartUp = () => {
   if (Config.useFramework && !Config.useStress) {
       stressCircle.style.display = 'none';
       stressSlider.style.display = 'none';

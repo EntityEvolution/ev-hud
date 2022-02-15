@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
   
     checkArmor.addEventListener('click', () => {
         armor = checkArmor.checked;
-        armorCircle.style.display = armor ? 'inline-block' : 'none'
+        armorCircle.style.display = armor ? 'inline-block' : 'none';
     })
   
     checkStamina.addEventListener('click', () => {

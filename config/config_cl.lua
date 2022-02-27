@@ -21,3 +21,4 @@ Config.voiceDesc    = 'Adjust the voice range' -- Keybind description
 Config.voiceDefault = 66 -- Whisper: 33, Normal: 66, Shout: 100,
 
 Config.VehicleOnlyRadar = true
+Config.WaitTillSpawn = true -- Set this to false to use the export
